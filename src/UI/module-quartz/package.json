@@ -2,6 +2,7 @@
     "name": "nm-module-quartz",
     "version": "1.0.5",
     "code": "quartz",
+    "author": "Oldli",
     "title": "任务调度",
     "description": "任务调度",
     "main": "src/index.js",
