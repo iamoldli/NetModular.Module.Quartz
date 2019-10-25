@@ -2,17 +2,17 @@ using System;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
-using Nm.Lib.Quartz.Abstractions;
-using Nm.Lib.Utils.Core.Result;
-using Nm.Module.Quartz.Application.JobService.ViewModels;
-using Nm.Module.Quartz.Domain.Job;
-using Nm.Module.Quartz.Domain.Job.Models;
-using Nm.Module.Quartz.Domain.JobLog;
-using Nm.Module.Quartz.Domain.JobLog.Models;
-using Nm.Module.Quartz.Infrastructure.Repositories;
+using NetModular.Lib.Quartz.Abstractions;
+using NetModular.Lib.Utils.Core.Result;
+using NetModular.Module.Quartz.Application.JobService.ViewModels;
+using NetModular.Module.Quartz.Domain.Job;
+using NetModular.Module.Quartz.Domain.Job.Models;
+using NetModular.Module.Quartz.Domain.JobLog;
+using NetModular.Module.Quartz.Domain.JobLog.Models;
+using NetModular.Module.Quartz.Infrastructure.Repositories;
 using Quartz;
 
-namespace Nm.Module.Quartz.Application.JobService
+namespace NetModular.Module.Quartz.Application.JobService
 {
     public class JobService : IJobService
     {
@@ -47,12 +47,12 @@ namespace Nm.Module.Quartz.Application.JobService
         {
             var entity = _mapper.Map<JobEntity>(model);
             entity.JobKey = $"{model.Group}.{model.Code}";
-            entity.Status = JobStatus.Pause;//Ä¬ÈÏÌí¼ÓºóÔÝÍ££¬ÐèÒªÊÖ¶¯Æô¶¯
+            entity.Status = JobStatus.Pause;//Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½Óºï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½Òªï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½
             entity.EndDate = entity.EndDate.AddDays(1);
 
             if (await _repository.Exists(entity))
             {
-                return ResultModel.Failed($"µ±Ç°ÈÎÎñ×é{entity.Group}ÒÑ´æÔÚÈÎÎñ±àÂë${entity.Code}");
+                return ResultModel.Failed($"ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½{entity.Group}ï¿½Ñ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½${entity.Code}");
             }
 
             using (var uow = _dbContext.NewUnitOfWork())
@@ -71,7 +71,7 @@ namespace Nm.Module.Quartz.Application.JobService
                 }
             }
 
-            return ResultModel.Failed("Ìí¼ÓÊ§°Ü");
+            return ResultModel.Failed("ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½");
         }
 
         public async Task<IResultModel> Edit(Guid id)
@@ -79,7 +79,7 @@ namespace Nm.Module.Quartz.Application.JobService
             var entity = await _repository.GetAsync(id);
             if (entity == null)
             {
-                return ResultModel.Failed("ÈÎÎñ²»´æÔÚ");
+                return ResultModel.Failed("ï¿½ï¿½ï¿½ñ²»´ï¿½ï¿½ï¿½");
             }
 
             var model = _mapper.Map<JobUpdateModel>(entity);
@@ -93,7 +93,7 @@ namespace Nm.Module.Quartz.Application.JobService
             var entity = await _repository.GetAsync(model.Id);
             if (entity == null)
             {
-                return ResultModel.Failed("ÈÎÎñ²»´æÔÚ");
+                return ResultModel.Failed("ï¿½ï¿½ï¿½ñ²»´ï¿½ï¿½ï¿½");
             }
 
             var oldStatus = entity.Status;
@@ -105,18 +105,18 @@ namespace Nm.Module.Quartz.Application.JobService
 
             if (await _repository.Exists(entity))
             {
-                return ResultModel.Failed($"µ±Ç°ÈÎÎñ×é{entity.Group}ÒÑ´æÔÚÈÎÎñ±àÂë${entity.Code}");
+                return ResultModel.Failed($"ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½{entity.Group}ï¿½Ñ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½${entity.Code}");
             }
 
             using (var uow = _dbContext.NewUnitOfWork())
             {
-                //Î´ÔËÐÐ×´Ì¬ÐÞ¸ÄÎªÔÝÍ£
+                //Î´ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½Þ¸ï¿½Îªï¿½ï¿½Í£
                 if (oldStatus != JobStatus.Running)
                 {
                     entity.Status = JobStatus.Pause;
                 }
 
-                //Èç¹û²»ÊÇÎ´Íê³ÉµÄÈÎÎñ£¬ÐèÒªÏÈ´Óµ÷¶È·þÎñÖÐÉ¾³ýÈÎÎñ
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½Éµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½È´Óµï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 if (oldStatus != JobStatus.Completed)
                 {
                     await _quartzServer.DeleteJob(oldJobKey);
@@ -135,7 +135,7 @@ namespace Nm.Module.Quartz.Application.JobService
                 }
             }
 
-            return ResultModel.Failed("Ìí¼ÓÊ§°Ü");
+            return ResultModel.Failed("ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½");
         }
 
         public async Task<IResultModel> Delete(Guid id)
@@ -143,7 +143,7 @@ namespace Nm.Module.Quartz.Application.JobService
             var entity = await _repository.GetAsync(id);
             if (entity == null)
             {
-                return ResultModel.Failed("ÈÎÎñ²»´æÔÚ");
+                return ResultModel.Failed("ï¿½ï¿½ï¿½ñ²»´ï¿½ï¿½ï¿½");
             }
 
             var result = await _repository.DeleteAsync(id);
@@ -156,10 +156,10 @@ namespace Nm.Module.Quartz.Application.JobService
                     await _quartzServer.DeleteJob(jobKey);
                 }
 
-                return ResultModel.Success("ÒÑÉ¾³ý");
+                return ResultModel.Success("ï¿½ï¿½É¾ï¿½ï¿½");
             }
 
-            return ResultModel.Failed("É¾³ýÊ§°Ü");
+            return ResultModel.Failed("É¾ï¿½ï¿½Ê§ï¿½ï¿½");
         }
 
         public async Task<IResultModel> Pause(Guid id)
@@ -167,12 +167,12 @@ namespace Nm.Module.Quartz.Application.JobService
             var entity = await _repository.GetAsync(id);
             if (entity == null)
             {
-                return ResultModel.Failed("ÈÎÎñ²»´æÔÚ");
+                return ResultModel.Failed("ï¿½ï¿½ï¿½ñ²»´ï¿½ï¿½ï¿½");
             }
 
             if (entity.Status == JobStatus.Completed)
             {
-                return ResultModel.Failed("ÈÎÎñÒÑ½áÊø");
+                return ResultModel.Failed("ï¿½ï¿½ï¿½ï¿½ï¿½Ñ½ï¿½ï¿½ï¿½");
             }
 
             if (entity.Status != JobStatus.Pause)
@@ -190,17 +190,17 @@ namespace Nm.Module.Quartz.Application.JobService
 
                             uow.Commit();
 
-                            return ResultModel.Success("ÒÑÔÝÍ£");
+                            return ResultModel.Success("ï¿½ï¿½ï¿½ï¿½Í£");
                         }
                         catch (Exception ex)
                         {
-                            _logger.LogError($"ÈÎÎñÔÝÍ£Ê§°Ü£º{ex}");
+                            _logger.LogError($"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£Ê§ï¿½Ü£ï¿½{ex}");
                         }
                     }
                 }
             }
 
-            return ResultModel.Failed("ÔÝÍ£Ê§°Ü");
+            return ResultModel.Failed("ï¿½ï¿½Í£Ê§ï¿½ï¿½");
         }
 
         public async Task<IResultModel> Resume(Guid id)
@@ -208,7 +208,7 @@ namespace Nm.Module.Quartz.Application.JobService
             var entity = await _repository.GetAsync(id);
             if (entity == null)
             {
-                return ResultModel.Failed("ÈÎÎñ²»´æÔÚ");
+                return ResultModel.Failed("ï¿½ï¿½ï¿½ñ²»´ï¿½ï¿½ï¿½");
             }
 
             if (entity.Status != JobStatus.Running)
@@ -221,12 +221,12 @@ namespace Nm.Module.Quartz.Application.JobService
                     {
                         try
                         {
-                            //ÒÑÍê³ÉµÄÈÎÎñ£¬ÖØÆôÐèÒªÖØÐÂ¼ÓÈëµ½µ÷¶ÈÖÐ
+                            //ï¿½ï¿½ï¿½ï¿½Éµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Â¼ï¿½ï¿½ëµ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                             if (oldStatus == JobStatus.Completed)
                             {
                                 if (entity.EndDate <= DateTime.Now)
                                 {
-                                    return ResultModel.Failed("ÈÎÎñÊ±Ð§ÒÑ¹ýÆÚ");
+                                    return ResultModel.Failed("ï¿½ï¿½ï¿½ï¿½Ê±Ð§ï¿½Ñ¹ï¿½ï¿½ï¿½");
                                 }
 
                                 var result = await AddJob(entity, true);
@@ -244,17 +244,17 @@ namespace Nm.Module.Quartz.Application.JobService
 
                             uow.Commit();
 
-                            return ResultModel.Success("ÒÑÆô¶¯");
+                            return ResultModel.Success("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
                         }
                         catch (Exception ex)
                         {
-                            _logger.LogError($"ÈÎÎñÆô¶¯Ê§°Ü£º{ex}");
+                            _logger.LogError($"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½{ex}");
                         }
                     }
                 }
             }
 
-            return ResultModel.Failed("Æô¶¯Ê§°Ü");
+            return ResultModel.Failed("ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½");
         }
 
         public async Task<IResultModel> Log(JobLogQueryModel model)
@@ -268,17 +268,17 @@ namespace Nm.Module.Quartz.Application.JobService
         }
 
         /// <summary>
-        /// Ìí¼ÓÈÎÎñ
+        /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         /// </summary>
         /// <param name="entity"></param>
-        /// <param name="start">ÊÇ·ñÁ¢¼´Æô¶¯</param>
+        /// <param name="start">ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</param>
         /// <returns></returns>
         private async Task<IResultModel> AddJob(JobEntity entity, bool start = false)
         {
             var jobClassType = Type.GetType(entity.JobClass);
             if (jobClassType == null)
             {
-                return ResultModel.Failed($"ÈÎÎñÀà({entity.JobClass})²»´æÔÚ");
+                return ResultModel.Failed($"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½({entity.JobClass})ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
             }
 
             var jobKey = new JobKey(entity.Code, entity.Group);
@@ -287,7 +287,7 @@ namespace Nm.Module.Quartz.Application.JobService
                 .EndAt(entity.EndDate.ToUniversalTime())
                 .WithDescription(entity.Name);
 
-            //Èç¹û¿ªÊ¼ÈÕÆÚÐ¡ÓÚµÈÓÚµ±Ç°ÈÕÆÚÔòÁ¢¼´Æô¶¯
+            //ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½Úµï¿½ï¿½Úµï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             if (entity.BeginDate <= DateTime.Now)
             {
                 triggerBuilder.StartNow();
@@ -299,7 +299,7 @@ namespace Nm.Module.Quartz.Application.JobService
 
             if (entity.TriggerType == TriggerType.Simple)
             {
-                //¼òµ¥ÈÎÎñ
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 triggerBuilder.WithSimpleSchedule(builder =>
                 {
                     builder.WithIntervalInSeconds(entity.Interval);
@@ -317,10 +317,10 @@ namespace Nm.Module.Quartz.Application.JobService
             {
                 if (!CronExpression.IsValidExpression(entity.Cron))
                 {
-                    return ResultModel.Failed("CRON±í´ïÊ½ÎÞÐ§");
+                    return ResultModel.Failed("CRONï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½Ð§");
                 }
 
-                //CRONÈÎÎñ
+                //CRONï¿½ï¿½ï¿½ï¿½
                 triggerBuilder.WithCronSchedule(entity.Cron);
             }
 
@@ -331,7 +331,7 @@ namespace Nm.Module.Quartz.Application.JobService
 
                 if (!start)
                 {
-                    //ÏÈÔÝÍ£
+                    //ï¿½ï¿½ï¿½ï¿½Í£
                     await _quartzServer.PauseJob(jobKey);
                 }
 
@@ -339,7 +339,7 @@ namespace Nm.Module.Quartz.Application.JobService
             }
             catch (Exception ex)
             {
-                _logger.LogError("ÈÎÎñµ÷¶ÈÌí¼ÓÈÎÎñÊ§°Ü" + ex);
+                _logger.LogError("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½" + ex);
             }
 
             return ResultModel.Failed();

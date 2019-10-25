@@ -1,6 +1,6 @@
-using Nm.Lib.Data.Abstractions;
+using NetModular.Lib.Data.Abstractions;
 
-namespace Nm.Module.Quartz.Infrastructure.Repositories.SQLite
+namespace NetModular.Module.Quartz.Infrastructure.Repositories.SQLite
 {
     public class GroupRepository : SqlServer.GroupRepository
     {

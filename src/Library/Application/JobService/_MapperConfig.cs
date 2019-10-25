@@ -1,9 +1,9 @@
 using AutoMapper;
-using Nm.Lib.Mapper.AutoMapper;
-using Nm.Module.Quartz.Application.JobService.ViewModels;
-using Nm.Module.Quartz.Domain.Job;
+using NetModular.Lib.Mapper.AutoMapper;
+using NetModular.Module.Quartz.Application.JobService.ViewModels;
+using NetModular.Module.Quartz.Domain.Job;
 
-namespace Nm.Module.Quartz.Application.JobService
+namespace NetModular.Module.Quartz.Application.JobService
 {
     public class MapperConfig : IMapperConfig
     {

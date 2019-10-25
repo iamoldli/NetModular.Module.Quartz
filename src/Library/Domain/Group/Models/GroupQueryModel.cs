@@ -1,6 +1,6 @@
-using  Nm.Lib.Data.Query;
+using  NetModular.Lib.Data.Query;
 
-namespace  Nm.Module.Quartz.Domain.Group.Models
+namespace  NetModular.Module.Quartz.Domain.Group.Models
 {
     public class GroupQueryModel : QueryModel
     {

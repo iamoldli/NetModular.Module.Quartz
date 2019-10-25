@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using Dapper;
-using Nm.Lib.Data.Abstractions;
-using Nm.Lib.Data.Abstractions.Enums;
+using NetModular.Lib.Data.Abstractions;
+using NetModular.Lib.Data.Abstractions.Enums;
 
-namespace Nm.Module.Quartz.Infrastructure.Repositories
+namespace NetModular.Module.Quartz.Infrastructure.Repositories
 {
     public class CreateDatabaseEvent : IDatabaseCreateEvents
     {

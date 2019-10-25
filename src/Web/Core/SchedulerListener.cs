@@ -1,10 +1,10 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using Nm.Module.Quartz.Domain.Job;
+using NetModular.Module.Quartz.Domain.Job;
 using Quartz;
 
-namespace Nm.Module.Quartz.Web.Core
+namespace NetModular.Module.Quartz.Web.Core
 {
     public class SchedulerListener : ISchedulerListener
     {

@@ -1,4 +1,4 @@
-namespace Nm.Module.Quartz.Domain.Group
+namespace NetModular.Module.Quartz.Domain.Group
 {
     public partial class GroupEntity
     {

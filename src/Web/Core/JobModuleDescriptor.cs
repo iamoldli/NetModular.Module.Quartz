@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Nm.Lib.Module.Abstractions;
-using Nm.Lib.Utils.Core.Result;
+using NetModular.Lib.Module.Abstractions;
+using NetModular.Lib.Utils.Core.Result;
 
-namespace Nm.Module.Quartz.Web.Core
+namespace NetModular.Module.Quartz.Web.Core
 {
     /// <summary>
     /// 任务模块描述类

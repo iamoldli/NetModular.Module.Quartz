@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using Nm.Lib.Module.Abstractions;
-using Nm.Lib.Utils.Core.Attributes;
-using Nm.Lib.Utils.Core.Extensions;
-using Nm.Lib.Utils.Core.Result;
+using NetModular.Lib.Module.Abstractions;
+using NetModular.Lib.Utils.Core.Attributes;
+using NetModular.Lib.Utils.Core.Extensions;
+using NetModular.Lib.Utils.Core.Result;
 using Quartz;
 
-namespace Nm.Module.Quartz.Web.Core
+namespace NetModular.Module.Quartz.Web.Core
 {
     /// <summary>
     /// 任务帮助类

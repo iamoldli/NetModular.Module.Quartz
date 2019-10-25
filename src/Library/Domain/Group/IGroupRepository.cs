@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Nm.Lib.Data.Abstractions;
-using Nm.Module.Quartz.Domain.Group.Models;
+using NetModular.Lib.Data.Abstractions;
+using NetModular.Module.Quartz.Domain.Group.Models;
 
-namespace Nm.Module.Quartz.Domain.Group
+namespace NetModular.Module.Quartz.Domain.Group
 {
     /// <summary>
     /// 任务组仓储

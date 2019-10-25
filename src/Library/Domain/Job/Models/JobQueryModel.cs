@@ -1,11 +1,11 @@
-using  Nm.Lib.Data.Query;
+using  NetModular.Lib.Data.Query;
 
-namespace  Nm.Module.Quartz.Domain.Job.Models
+namespace  NetModular.Module.Quartz.Domain.Job.Models
 {
     public class JobQueryModel : QueryModel
     {
         /// <summary>
-        /// Ãû³Æ
+        /// ï¿½ï¿½ï¿½ï¿½
         /// </summary>
         public string Name { get; set; }
     }

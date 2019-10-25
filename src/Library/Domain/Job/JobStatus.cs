@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace Nm.Module.Quartz.Domain.Job
+namespace NetModular.Module.Quartz.Domain.Job
 {
     /// <summary>
     /// 任务状态

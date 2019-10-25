@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Nm.Lib.Data.Abstractions;
-using Nm.Module.Quartz.Domain.JobLog.Models;
+using NetModular.Lib.Data.Abstractions;
+using NetModular.Module.Quartz.Domain.JobLog.Models;
 
-namespace Nm.Module.Quartz.Domain.JobLog
+namespace NetModular.Module.Quartz.Domain.JobLog
 {
     public interface IJobLogRepository : IRepository<JobLogEntity>
     {

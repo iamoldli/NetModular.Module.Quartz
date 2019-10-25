@@ -1,8 +1,8 @@
 ﻿using System;
 using FluentValidation;
-using Nm.Module.Quartz.Application.JobService.ViewModels;
+using NetModular.Module.Quartz.Application.JobService.ViewModels;
 
-namespace Nm.Module.Quartz.Web.Validators
+namespace NetModular.Module.Quartz.Web.Validators
 {
     public class JobAddValidator : AbstractValidator<JobAddModel>
     {

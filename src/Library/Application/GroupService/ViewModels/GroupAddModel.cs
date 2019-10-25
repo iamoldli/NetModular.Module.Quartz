@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Nm.Module.Quartz.Application.GroupService.ViewModels
+namespace NetModular.Module.Quartz.Application.GroupService.ViewModels
 {
     /// <summary>
     /// 任务组添加模型

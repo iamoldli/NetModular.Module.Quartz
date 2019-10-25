@@ -3,13 +3,13 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Nm.Lib.Auth.Web.Attributes;
-using Nm.Lib.Utils.Core.Result;
-using Nm.Module.Quartz.Application.GroupService;
-using Nm.Module.Quartz.Application.GroupService.ViewModels;
-using Nm.Module.Quartz.Domain.Group.Models;
+using NetModular.Lib.Auth.Web.Attributes;
+using NetModular.Lib.Utils.Core.Result;
+using NetModular.Module.Quartz.Application.GroupService;
+using NetModular.Module.Quartz.Application.GroupService.ViewModels;
+using NetModular.Module.Quartz.Domain.Group.Models;
 
-namespace Nm.Module.Quartz.Web.Controllers
+namespace NetModular.Module.Quartz.Web.Controllers
 {
     [Description("任务组管理")]
     public class GroupController : ModuleController

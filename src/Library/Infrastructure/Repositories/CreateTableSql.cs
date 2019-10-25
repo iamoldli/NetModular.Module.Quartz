@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Nm.Module.Quartz.Infrastructure.Repositories
+namespace NetModular.Module.Quartz.Infrastructure.Repositories
 {
     public class CreateTableSql
     {

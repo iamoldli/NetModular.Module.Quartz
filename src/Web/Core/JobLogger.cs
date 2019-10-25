@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Nm.Lib.Quartz.Abstractions;
-using Nm.Module.Quartz.Domain.JobLog;
+using NetModular.Lib.Quartz.Abstractions;
+using NetModular.Module.Quartz.Domain.JobLog;
 
-namespace Nm.Module.Quartz.Web.Core
+namespace NetModular.Module.Quartz.Web.Core
 {
     /// <summary>
     /// 任务日志

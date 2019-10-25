@@ -1,8 +1,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Nm.Lib.Utils.Core.Options;
+using NetModular.Lib.Utils.Core.Options;
 
-namespace Nm.Module.Quartz.Infrastructure.Options
+namespace NetModular.Module.Quartz.Infrastructure.Options
 {
     public class ModuleOptionsConfigure : IModuleOptionsConfigure
     {

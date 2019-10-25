@@ -2,13 +2,13 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using Nm.Lib.Utils.Core.Result;
-using Nm.Module.Quartz.Application.GroupService.ViewModels;
-using Nm.Module.Quartz.Domain.Group;
-using Nm.Module.Quartz.Domain.Group.Models;
-using Nm.Module.Quartz.Domain.Job;
+using NetModular.Lib.Utils.Core.Result;
+using NetModular.Module.Quartz.Application.GroupService.ViewModels;
+using NetModular.Module.Quartz.Domain.Group;
+using NetModular.Module.Quartz.Domain.Group.Models;
+using NetModular.Module.Quartz.Domain.Job;
 
-namespace Nm.Module.Quartz.Application.GroupService
+namespace NetModular.Module.Quartz.Application.GroupService
 {
     public class GroupService : IGroupService
     {
@@ -38,7 +38,7 @@ namespace Nm.Module.Quartz.Application.GroupService
             var entity = _mapper.Map<GroupEntity>(model);
             if (await _repository.Exists(entity))
             {
-                return ResultModel.Failed("±àÂë");
+                return ResultModel.Failed("ï¿½ï¿½ï¿½ï¿½");
             }
 
             var result = await _repository.AddAsync(entity);
@@ -55,7 +55,7 @@ namespace Nm.Module.Quartz.Application.GroupService
 
             if (await _jobRepository.ExistsByGroup(entity.Code))
             {
-                return ResultModel.Failed("ÓÐÈÎÎñ°ó¶¨ÁË¸Ã·Ö×é£¬ÇëÏÈÉ¾³ýÈÎÎñ");
+                return ResultModel.Failed("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¸Ã·ï¿½ï¿½é£¬ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
             }
 
             var result = await _repository.DeleteAsync(id);

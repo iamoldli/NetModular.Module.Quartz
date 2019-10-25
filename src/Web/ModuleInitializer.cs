@@ -5,17 +5,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
-using Nm.Lib.Data.Abstractions.Enums;
-using Nm.Lib.Data.Abstractions.Options;
-using Nm.Lib.Module.AspNetCore;
-using Nm.Lib.Quartz.Abstractions;
-using Nm.Lib.Quartz.Web;
-using Nm.Lib.Utils.Core.Extensions;
-using Nm.Module.Quartz.Infrastructure.Options;
-using Nm.Module.Quartz.Web.Core;
+using NetModular.Lib.Data.Abstractions.Enums;
+using NetModular.Lib.Data.Abstractions.Options;
+using NetModular.Lib.Module.AspNetCore;
+using NetModular.Lib.Quartz.Abstractions;
+using NetModular.Lib.Quartz.Web;
+using NetModular.Lib.Utils.Core.Extensions;
+using NetModular.Module.Quartz.Infrastructure.Options;
+using NetModular.Module.Quartz.Web.Core;
 using Quartz;
 
-namespace Nm.Module.Quartz.Web
+namespace NetModular.Module.Quartz.Web
 {
     public class ModuleInitializer : IModuleInitializer
     {

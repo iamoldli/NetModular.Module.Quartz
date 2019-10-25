@@ -1,8 +1,8 @@
 using System;
-using Nm.Lib.Data.Abstractions;
-using Nm.Lib.Data.Core;
+using NetModular.Lib.Data.Abstractions;
+using NetModular.Lib.Data.Core;
 
-namespace Nm.Module.Quartz.Infrastructure.Repositories
+namespace NetModular.Module.Quartz.Infrastructure.Repositories
 {
     public class QuartzDbContext : DbContext
     {

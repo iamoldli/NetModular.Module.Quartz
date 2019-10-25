@@ -1,24 +1,24 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-using Nm.Lib.Data.Query;
+using NetModular.Lib.Data.Query;
 
-namespace Nm.Module.Quartz.Domain.JobLog.Models
+namespace NetModular.Module.Quartz.Domain.JobLog.Models
 {
     public class JobLogQueryModel : QueryModel
     {
         /// <summary>
-        /// ÈÎÎñ±àºÅ
+        /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         /// </summary>
-        [Required(ErrorMessage = "ÇëÑ¡ÔñÈÎÎñ")]
+        [Required(ErrorMessage = "ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
         public Guid JobId { get; set; }
 
         /// <summary>
-        /// ¿ªÊ¼ÈÕÆÚ
+        /// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
         /// </summary>
         public DateTime? StartDate { get; set; }
 
         /// <summary>
-        /// ½áÊø
+        /// ï¿½ï¿½ï¿½ï¿½
         /// </summary>
         public DateTime? EndDate { get; set; }
     }

@@ -1,8 +1,8 @@
 ﻿using System;
-using Nm.Lib.Data.Abstractions.Attributes;
-using Nm.Lib.Data.Core.Entities;
+using NetModular.Lib.Data.Abstractions.Attributes;
+using NetModular.Lib.Data.Core.Entities;
 
-namespace Nm.Module.Quartz.Domain.JobLog
+namespace NetModular.Module.Quartz.Domain.JobLog
 {
     /// <summary>
     /// 任务日期

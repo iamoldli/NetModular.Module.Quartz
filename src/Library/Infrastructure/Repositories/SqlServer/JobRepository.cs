@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Nm.Lib.Data.Abstractions;
-using Nm.Lib.Data.Core;
-using Nm.Lib.Data.Query;
-using Nm.Module.Admin.Domain.Account;
-using Nm.Module.Quartz.Domain.Job;
-using Nm.Module.Quartz.Domain.Job.Models;
+using NetModular.Lib.Data.Abstractions;
+using NetModular.Lib.Data.Core;
+using NetModular.Lib.Data.Query;
+using NetModular.Module.Admin.Domain.Account;
+using NetModular.Module.Quartz.Domain.Job;
+using NetModular.Module.Quartz.Domain.Job.Models;
 
-namespace Nm.Module.Quartz.Infrastructure.Repositories.SqlServer
+namespace NetModular.Module.Quartz.Infrastructure.Repositories.SqlServer
 {
     public class JobRepository : RepositoryAbstract<JobEntity>, IJobRepository
     {

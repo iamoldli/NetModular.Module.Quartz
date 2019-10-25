@@ -1,9 +1,9 @@
 using AutoMapper;
-using Nm.Lib.Mapper.AutoMapper;
-using Nm.Module.Quartz.Application.GroupService.ViewModels;
-using Nm.Module.Quartz.Domain.Group;
+using NetModular.Lib.Mapper.AutoMapper;
+using NetModular.Module.Quartz.Application.GroupService.ViewModels;
+using NetModular.Module.Quartz.Domain.Group;
 
-namespace Nm.Module.Quartz.Application.GroupService
+namespace NetModular.Module.Quartz.Application.GroupService
 {
     public class MapperConfig : IMapperConfig
     {
