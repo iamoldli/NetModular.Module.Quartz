@@ -5,6 +5,7 @@ module.exports = {
       {
         useBuiltIns: 'entry'
       }
-    ]
+    ],
+    ['@vue/babel-preset-jsx']
   ]
 }

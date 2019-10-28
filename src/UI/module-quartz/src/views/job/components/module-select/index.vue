@@ -1,5 +1,5 @@
 <script>
-import { mixins } from 'nm-lib-skins'
+import { mixins } from 'netmodular-ui'
 
 const api = $api.quartz.job
 

@@ -79,7 +79,7 @@
   </nm-form-dialog>
 </template>
 <script>
-import { mixins } from 'nm-lib-skins'
+import { mixins } from 'netmodular-ui'
 import ModuleSelect from '../module-select'
 import JobSelect from '../job-select'
 import GroupSelect from '../../../group/components/select'

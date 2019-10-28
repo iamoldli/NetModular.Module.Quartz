@@ -1,6 +1,6 @@
 ﻿using NetModular.Lib.Host.Web;
 
-namespace NetModular.Module.Common.WebHost
+namespace NetModular.Module.Quartz.WebHost
 {
     public class Program
     {
