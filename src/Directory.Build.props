@@ -17,7 +17,6 @@
     <Company>Oldli</Company>
     <Copyright>Oldli</Copyright>
     <PackageProjectUrl>https://nm.iamoldli.com/docs/</PackageProjectUrl>
-    <PackageIconUrl>https://github.com/iamoldli/NetModular.Docs/blob/master/src/.vuepress/public/images/logo.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/iamoldli/NetModular.Module.Quartz</RepositoryUrl>
   </PropertyGroup>
 </Project>
