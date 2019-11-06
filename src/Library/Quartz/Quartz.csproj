@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NetModular.Lib.Quartz.Core" Version="1.4.1" />
+    <PackageReference Include="NetModular.Lib.Quartz.Core" Version="1.5.0" />
   </ItemGroup>
 
 </Project>

@@ -1,9 +1,14 @@
 using System.Collections.Specialized;
 using System.Linq;
 using Microsoft.AspNetCore.Builder;
+#if NETSTANDARD2_0
+using Microsoft.AspNetCore.Hosting;
+#endif
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+#if NETCOREAPP3_0
 using Microsoft.Extensions.Hosting;
+#endif
 using Microsoft.Extensions.Options;
 using NetModular.Lib.Data.Abstractions.Enums;
 using NetModular.Lib.Data.Abstractions.Options;
@@ -46,7 +51,11 @@ namespace NetModular.Module.Quartz.Web
         /// </summary>
         /// <param name="app"></param>
         /// <param name="env"></param>
+#if NETSTANDARD2_0
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+#elif NETCOREAPP3_0
         public void Configure(IApplicationBuilder app, IHostEnvironment env)
+#endif
         {
         }
 
