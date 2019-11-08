@@ -10,7 +10,7 @@
 
       <!--按钮-->
       <template v-slot:querybar-buttons>
-        <nm-button-has :options="buttons.add" @click="add" />
+        <nm-button v-bind="buttons.add" @click="add" />
       </template>
 
       <template v-slot:col-jobClass="{row}">{{row.jobClass.split(',')[0]}}</template>
@@ -45,11 +45,11 @@
 
       <!--操作列-->
       <template v-slot:col-operation="{row}">
-        <nm-button-has :options="buttons.edit" @click="edit(row)" />
-        <nm-button-has v-if="row.status===0" :options="buttons.pause" @click="pause(row)" />
-        <nm-button-has v-else :options="buttons.resume" @click="resume(row)" />
-        <nm-button-has :options="buttons.log" @click="log(row)" />
-        <nm-button-delete :options="buttons.del" :id="row.id" :action="removeAction" @success="refresh" />
+        <nm-button v-bind="buttons.edit" @click="edit(row)" />
+        <nm-button v-bind="buttons.pause" v-if="row.status===0" @click="pause(row)" />
+        <nm-button v-bind="buttons.resume" v-else @click="resume(row)" />
+        <nm-button v-bind="buttons.log" @click="log(row)" />
+        <nm-button-delete v-bind="buttons.del" :id="row.id" :action="removeAction" @success="refresh" />
       </template>
     </nm-list>
 
