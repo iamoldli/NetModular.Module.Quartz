@@ -1,6 +1,7 @@
 using System;
 using NetModular.Lib.Data.Abstractions.Attributes;
 using NetModular.Lib.Data.Core.Entities.Extend;
+using NetModular.Lib.Utils.Core.Enums;
 
 namespace NetModular.Module.Quartz.Domain.Job
 {
@@ -14,6 +15,11 @@ namespace NetModular.Module.Quartz.Domain.Job
         /// 所属模块
         /// </summary>
         public string ModuleCode { get; set; }
+
+        /// <summary>
+        /// 任务类型
+        /// </summary>
+        public JobType JobType { get; set; }
 
         /// <summary>
         /// 任务唯一键

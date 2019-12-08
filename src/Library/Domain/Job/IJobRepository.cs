@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using NetModular.Lib.Data.Abstractions;
@@ -34,9 +35,27 @@ namespace NetModular.Module.Quartz.Domain.Job
         /// <summary>
         /// 修改任务状态
         /// </summary>
-        /// <param name="jobKey"></param>
-        /// <param name="status"></param>
+        /// <param name="group">分组</param>
+        /// <param name="code">编码</param>
+        /// <param name="status">状态</param>
         /// <returns></returns>
-        Task<bool> UpdateStatus(string jobKey, JobStatus status);
+        Task<bool> UpdateStatus(string group,string code, JobStatus status);
+
+        /// <summary>
+        /// 修改任务状态
+        /// </summary>
+        /// <param name="id">任务编号</param>
+        /// <param name="status">状态</param>
+        /// <param name="uow"></param>
+        /// <returns></returns>
+        Task<bool> UpdateStatus(Guid id, JobStatus status, IUnitOfWork uow = null);
+
+        /// <summary>
+        /// 任务是否停止
+        /// </summary>
+        /// <param name="group"></param>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        Task<bool> HasStop(string group, string code);
     }
 }

@@ -7,16 +7,21 @@ export default [
   },
   {
     name: 'group',
-    label: '任务组编号'
+    label: '分组'
   },
   {
     name: 'name',
-    label: '任务名称'
+    label: '名称'
+  },
+  {
+    name: 'typeName',
+    label: '类型'
   },
   {
     name: 'jobClass',
-    label: '任务类',
-    width: '300'
+    label: '执行类',
+    width: '300',
+    show: false
   },
   {
     name: 'triggerType',
@@ -32,17 +37,12 @@ export default [
   },
   {
     name: 'cron',
-    label: 'Cron表达式'
+    label: 'CRON表达式'
   },
   {
     name: 'beginDate',
-    label: '开始日期',
-    format: 'YYYY-MM-DD'
-  },
-  {
-    name: 'endDate',
-    label: '结束日期',
-    format: 'YYYY-MM-DD'
+    label: '有效期',
+    width: 190
   },
   {
     name: 'status',

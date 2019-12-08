@@ -38,7 +38,7 @@ namespace NetModular.Module.Quartz.Application.GroupService
             var entity = _mapper.Map<GroupEntity>(model);
             if (await _repository.Exists(entity))
             {
-                return ResultModel.Failed("����");
+                return ResultModel.Failed("编码已存在");
             }
 
             var result = await _repository.AddAsync(entity);
@@ -55,7 +55,7 @@ namespace NetModular.Module.Quartz.Application.GroupService
 
             if (await _jobRepository.ExistsByGroup(entity.Code))
             {
-                return ResultModel.Failed("��������˸÷��飬����ɾ������");
+                return ResultModel.Failed("有任务绑定了该分组，请先删除任务");
             }
 
             var result = await _repository.DeleteAsync(id);

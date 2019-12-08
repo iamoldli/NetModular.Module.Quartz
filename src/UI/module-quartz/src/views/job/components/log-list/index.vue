@@ -1,5 +1,5 @@
 <template>
-  <nm-list-dialog v-bind="dialog" :visible.sync="visible_" @open="onOpen">
+  <nm-list-dialog :title="`任务日志(${name})`" icon="log" :visible.sync="visible_" @open="onOpen">
     <nm-list ref="list" v-bind="list">
       <!--查询条件-->
       <template v-slot:querybar>
@@ -11,9 +11,9 @@
         </el-form-item>
       </template>
 
-      <template v-slot:col-type="{row}">
-        <el-tag v-if="row.type===0" type="success" effect="dark" size="small">信息</el-tag>
-        <el-tag v-else-if="row.type===1" type="warning" effect="dark" size="small">调试</el-tag>
+      <template v-slot:col-type="{ row }">
+        <el-tag v-if="row.type === 0" type="success" effect="dark" size="small">信息</el-tag>
+        <el-tag v-else-if="row.type === 1" type="warning" effect="dark" size="small">调试</el-tag>
         <el-tag v-else type="danger" effect="dark" size="small">异常</el-tag>
       </template>
     </nm-list>
@@ -43,21 +43,18 @@ export default {
     }
   },
   props: {
-    job: {
-      type: Object
-    }
-  },
-  computed: {
-    dialog() {
-      return {
-        title: `任务日志(${this.job.name})`,
-        icon: 'log'
-      }
-    }
+    id: String,
+    name: String
   },
   methods: {
+    refresh() {
+      this.$nextTick(() => {
+        this.$refs.list.refresh()
+      })
+    },
     onOpen() {
-      this.list.model.jobId = this.job.id
+      this.list.model.jobId = this.id
+      this.refresh()
     }
   }
 }

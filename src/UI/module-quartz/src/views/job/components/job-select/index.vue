@@ -27,7 +27,8 @@ export default {
     }
   },
   watch: {
-    moduleId() {
+    moduleId(newVal, oldVal) {
+      if (oldVal) this.reset()
       this.refresh()
     }
   }

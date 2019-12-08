@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost
+ Source Server         : nm-quartz-mysql
  Source Server Type    : MySQL
- Source Server Version : 80015
- Source Host           : 127.0.0.1:3306
+ Source Server Version : 80018
+ Source Host           : localhost:27223
  Source Schema         : nm_admin
 
  Target Server Type    : MySQL
- Target Server Version : 80015
+ Target Server Version : 80018
  File Encoding         : 65001
 
- Date: 24/10/2019 11:13:28
+ Date: 08/12/2019 19:25:11
 */
 
 SET NAMES utf8mb4;
@@ -48,7 +48,7 @@ CREATE TABLE `account`  (
 -- ----------------------------
 -- Records of account
 -- ----------------------------
-INSERT INTO `account` VALUES ('2E23D1D9-4A72-ACC2-F6FF-39ED21CB6A4A', 0, 'admin', 'E739279CB28CDAFD7373618313803524', '管理员', '', '', '2019-10-24 11:11:05', '0.0.0.1', 1, b'0', '2019-10-09 00:00:00', '00000000-0000-0000-0000-000000000000', '2019-10-09 00:00:00', '00000000-0000-0000-0000-000000000000', '2019-10-09 00:00:00', '00000000-0000-0000-0000-000000000000', b'0', '2019-10-09 00:00:00', '00000000-0000-0000-0000-000000000000');
+INSERT INTO `account` VALUES ('2E23D1D9-4A72-ACC2-F6FF-39ED21CB6A4A', 0, 'admin', 'E739279CB28CDAFD7373618313803524', '管理员', '', '', '2019-12-08 19:14:25', '0.0.0.1', 1, b'0', '2019-10-09 00:00:00', '00000000-0000-0000-0000-000000000000', '2019-10-09 00:00:00', '00000000-0000-0000-0000-000000000000', '2019-10-09 00:00:00', '00000000-0000-0000-0000-000000000000', b'0', '2019-10-09 00:00:00', '00000000-0000-0000-0000-000000000000');
 
 -- ----------------------------
 -- Table structure for account_config
@@ -91,8 +91,10 @@ DROP TABLE IF EXISTS `auditinfo`;
 CREATE TABLE `auditinfo`  (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `AccountId` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '账户编号',
-  `Area` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '区域',
-  `Controller` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '控制器',
+  `Area` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '区域',
+  `Controller` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '控制器',
+  `Module` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `AccountName` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `ControllerDesc` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '控制器说明',
   `Action` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '操作',
   `ActionDesc` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '操作说明',
@@ -147,14 +149,14 @@ INSERT INTO `button` VALUES ('39f08dae-d23c-c202-2cc8-d4ac00483563', 'common_are
 INSERT INTO `button` VALUES ('39f08dae-d240-6179-e176-bd044f544712', 'common_area', '删除', 'delete', 'common_area_del', '2019-09-29 13:32:59', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-09-29 13:32:59', '39f08d5b-177c-a334-34e7-408ef121c6e0');
 INSERT INTO `button` VALUES ('39f08dae-e147-307d-4b87-1742fa9e5885', 'common_attachment', '删除', 'delete', 'common_attachment_del', '2019-09-29 13:33:03', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-09-29 13:33:03', '39f08d5b-177c-a334-34e7-408ef121c6e0');
 INSERT INTO `button` VALUES ('39f08dae-e157-e486-3d68-06e5152d5e50', 'common_attachment', '导出', 'export', 'common_attachment_export', '2019-09-29 13:33:03', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-09-29 13:33:03', '39f08d5b-177c-a334-34e7-408ef121c6e0');
-INSERT INTO `button` VALUES ('39f08daf-10f0-4af0-c82e-525f06a2f2c5', 'quartz_group', '添加', 'add', 'quartz_group_add', '2019-09-29 13:33:15', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:12:22', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `button` VALUES ('39f08daf-10f7-7c83-9eec-048c3b1c9884', 'quartz_group', '删除', 'delete', 'quartz_group_del', '2019-09-29 13:33:15', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:12:22', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `button` VALUES ('39f08daf-4498-7ee7-797c-a2ab7871b505', 'quartz_job', '添加', 'add', 'quartz_job_add', '2019-09-29 13:33:28', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:12:03', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `button` VALUES ('39f08daf-44a9-d1bc-755d-c3369034e10a', 'quartz_job', '编辑', 'edit', 'quartz_job_edit', '2019-09-29 13:33:28', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:12:03', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `button` VALUES ('39f08daf-44ad-ac06-083a-c5a44b8e99dc', 'quartz_job', '暂停', 'pause', 'quartz_job_pause', '2019-09-29 13:33:28', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:12:03', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `button` VALUES ('39f08daf-44ba-da99-4a81-8dcc78efcf82', 'quartz_job', '启动', 'run', 'quartz_job_resume', '2019-09-29 13:33:28', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:12:03', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `button` VALUES ('39f08daf-44c9-7fe4-defd-0939a64171cd', 'quartz_job', '日志', 'log', 'quartz_job_log', '2019-09-29 13:33:28', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:12:03', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `button` VALUES ('39f08daf-44cd-0154-5dcd-f428972e22f2', 'quartz_job', '删除', 'delete', 'quartz_job_del', '2019-09-29 13:33:28', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:12:03', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `button` VALUES ('39f08daf-10f0-4af0-c82e-525f06a2f2c5', 'quartz_group', '添加', 'add', 'quartz_group_add', '2019-09-29 13:33:15', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 15:44:33', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `button` VALUES ('39f08daf-10f7-7c83-9eec-048c3b1c9884', 'quartz_group', '删除', 'delete', 'quartz_group_del', '2019-09-29 13:33:15', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 15:44:33', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `button` VALUES ('39f08daf-4498-7ee7-797c-a2ab7871b505', 'quartz_job', '添加', 'add', 'quartz_job_add', '2019-09-29 13:33:28', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:23', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `button` VALUES ('39f08daf-44a9-d1bc-755d-c3369034e10a', 'quartz_job', '编辑', 'edit', 'quartz_job_edit', '2019-09-29 13:33:28', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:23', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `button` VALUES ('39f08daf-44ad-ac06-083a-c5a44b8e99dc', 'quartz_job', '暂停', 'pause', 'quartz_job_pause', '2019-09-29 13:33:28', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:23', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `button` VALUES ('39f08daf-44ba-da99-4a81-8dcc78efcf82', 'quartz_job', '启动', 'run', 'quartz_job_resume', '2019-09-29 13:33:28', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:23', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `button` VALUES ('39f08daf-44c9-7fe4-defd-0939a64171cd', 'quartz_job', '日志', 'log', 'quartz_job_log', '2019-09-29 13:33:28', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:23', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `button` VALUES ('39f08daf-44cd-0154-5dcd-f428972e22f2', 'quartz_job', '删除', 'delete', 'quartz_job_del', '2019-09-29 13:33:28', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:23', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
 INSERT INTO `button` VALUES ('39f08daf-7366-40d9-6116-510f50a9949b', 'admin_moduleinfo', '同步', 'refresh', 'admin_moduleinfo_sync', '2019-09-29 13:33:40', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-09-29 13:33:40', '39f08d5b-177c-a334-34e7-408ef121c6e0');
 INSERT INTO `button` VALUES ('39f08daf-7379-0830-a724-272048d335c4', 'admin_moduleinfo', '删除', 'delete', 'admin_moduleinfo_del', '2019-09-29 13:33:40', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-09-29 13:33:40', '39f08d5b-177c-a334-34e7-408ef121c6e0');
 INSERT INTO `button` VALUES ('39f08daf-8092-82f1-bf83-c74b15f5fae3', 'admin_permission', '同步', 'refresh', 'admin_permission_sync', '2019-09-29 13:33:43', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-09-29 13:33:43', '39f08d5b-177c-a334-34e7-408ef121c6e0');
@@ -181,6 +183,7 @@ INSERT INTO `button` VALUES ('39f08db3-eada-892b-b250-c2d58279d388', 'codegenera
 INSERT INTO `button` VALUES ('39f08db3-f788-9a1c-f227-f372acb73cea', 'codegenerator_enum', '添加', 'add', 'codegenerator_enum_add', '2019-09-29 13:38:36', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-09-29 13:38:36', '39f08d5b-177c-a334-34e7-408ef121c6e0');
 INSERT INTO `button` VALUES ('39f08db3-f7ba-4c00-d053-ca662ef2ad06', 'codegenerator_enum', '编辑', 'edit', 'codegenerator_enum_edit', '2019-09-29 13:38:36', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-09-29 13:38:36', '39f08d5b-177c-a334-34e7-408ef121c6e0');
 INSERT INTO `button` VALUES ('39f08db3-f7d6-7533-682f-739e51d10ae1', 'codegenerator_enum', '删除', 'delete', 'codegenerator_enum_del', '2019-09-29 13:38:36', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-09-29 13:38:36', '39f08d5b-177c-a334-34e7-408ef121c6e0');
+INSERT INTO `button` VALUES ('39f1f6c4-8bca-87e8-14fc-20ec32c73e24', 'quartz_job', '停止', 'stop', 'quartz_job_stop', '2019-12-08 16:19:38', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 19:15:23', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
 
 -- ----------------------------
 -- Table structure for button_permission
@@ -191,7 +194,7 @@ CREATE TABLE `button_permission`  (
   `ButtonCode` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `PermissionCode` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 91 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 114 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of button_permission
@@ -271,15 +274,19 @@ INSERT INTO `button_permission` VALUES (85, 'admin_config_add', 'admin_config_ad
 INSERT INTO `button_permission` VALUES (86, 'admin_config_edit', 'admin_config_edit_get');
 INSERT INTO `button_permission` VALUES (87, 'admin_config_edit', 'admin_config_update_post');
 INSERT INTO `button_permission` VALUES (88, 'admin_config_del', 'admin_config_delete_delete');
-INSERT INTO `button_permission` VALUES (93, 'quartz_job_add', 'quartz_job_add_post');
-INSERT INTO `button_permission` VALUES (94, 'quartz_job_edit', 'quartz_job_edit_get');
-INSERT INTO `button_permission` VALUES (95, 'quartz_job_edit', 'quartz_job_update_post');
-INSERT INTO `button_permission` VALUES (96, 'quartz_job_pause', 'quartz_job_pause_post');
-INSERT INTO `button_permission` VALUES (97, 'quartz_job_resume', 'quartz_job_resume_post');
-INSERT INTO `button_permission` VALUES (98, 'quartz_job_log', 'quartz_job_log_get');
-INSERT INTO `button_permission` VALUES (99, 'quartz_job_del', 'quartz_job_delete_delete');
-INSERT INTO `button_permission` VALUES (100, 'quartz_group_add', 'quartz_group_add_post');
-INSERT INTO `button_permission` VALUES (101, 'quartz_group_del', 'quartz_group_delete_delete');
+INSERT INTO `button_permission` VALUES (102, 'quartz_group_add', 'quartz_group_add_post');
+INSERT INTO `button_permission` VALUES (103, 'quartz_group_del', 'quartz_group_delete_delete');
+INSERT INTO `button_permission` VALUES (125, 'quartz_job_add', 'quartz_job_add_post');
+INSERT INTO `button_permission` VALUES (126, 'quartz_job_add', 'quartz_job_addhttpjob_post');
+INSERT INTO `button_permission` VALUES (127, 'quartz_job_edit', 'quartz_job_edit_get');
+INSERT INTO `button_permission` VALUES (128, 'quartz_job_edit', 'quartz_job_update_post');
+INSERT INTO `button_permission` VALUES (129, 'quartz_job_edit', 'quartz_job_edithttpjob_get');
+INSERT INTO `button_permission` VALUES (130, 'quartz_job_edit', 'quartz_job_updatehttpjob_post');
+INSERT INTO `button_permission` VALUES (131, 'quartz_job_pause', 'quartz_job_pause_post');
+INSERT INTO `button_permission` VALUES (132, 'quartz_job_resume', 'quartz_job_resume_post');
+INSERT INTO `button_permission` VALUES (133, 'quartz_job_stop', 'quartz_job_stop_post');
+INSERT INTO `button_permission` VALUES (134, 'quartz_job_log', 'quartz_job_log_get');
+INSERT INTO `button_permission` VALUES (135, 'quartz_job_del', 'quartz_job_delete_delete');
 
 -- ----------------------------
 -- Table structure for config
@@ -295,24 +302,33 @@ CREATE TABLE `config`  (
   `ModifiedTime` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
   `ModifiedBy` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of config
 -- ----------------------------
-INSERT INTO `config` VALUES (1, 'sys_title', '通用权限管理系统', '系统标题', '2019-09-29 12:02:03', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-09-29 13:40:32', '39f08d5b-177c-a334-34e7-408ef121c6e0');
-INSERT INTO `config` VALUES (2, 'sys_logo', '', '系统Logo', '2019-09-29 12:02:03', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-09-29 13:40:32', '39f08d5b-177c-a334-34e7-408ef121c6e0');
-INSERT INTO `config` VALUES (3, 'sys_home', '/admin/home', '系统首页', '2019-09-29 12:02:03', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-09-29 13:40:32', '39f08d5b-177c-a334-34e7-408ef121c6e0');
-INSERT INTO `config` VALUES (4, 'sys_userinfo_page', '', '个人信息页', '2019-09-29 12:02:03', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-09-29 13:40:32', '39f08d5b-177c-a334-34e7-408ef121c6e0');
+INSERT INTO `config` VALUES (1, 'sys_title', '通用权限管理系统', '系统标题', '2019-09-29 12:02:03', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 15:45:41', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `config` VALUES (2, 'sys_logo', '', '系统Logo', '2019-09-29 12:02:03', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 15:45:41', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `config` VALUES (3, 'sys_home', '/admin/home', '系统首页地址', '2019-09-29 12:02:03', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 15:45:41', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `config` VALUES (4, 'sys_userinfo_page', '', '个人信息页', '2019-09-29 12:02:03', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 15:45:41', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
 INSERT INTO `config` VALUES (5, 'sys_button_permission', 'True', '启用按钮权限', '2019-09-29 12:02:03', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-09-29 13:40:32', '39f08d5b-177c-a334-34e7-408ef121c6e0');
-INSERT INTO `config` VALUES (6, 'sys_permission_validate', 'True', '启用权限验证功能', '2019-09-29 12:02:03', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-09-29 13:40:32', '39f08d5b-177c-a334-34e7-408ef121c6e0');
+INSERT INTO `config` VALUES (6, 'sys_permission_validate', 'True', '开启权限验证', '2019-09-29 12:02:03', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 15:45:46', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
 INSERT INTO `config` VALUES (7, 'sys_auditing', 'True', '启用审计日志', '2019-09-29 12:02:03', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-09-29 13:40:32', '39f08d5b-177c-a334-34e7-408ef121c6e0');
 INSERT INTO `config` VALUES (8, 'sys_verify_code', 'False', '启用登录验证码功能', '2019-09-29 12:02:03', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-09-29 13:40:32', '39f08d5b-177c-a334-34e7-408ef121c6e0');
-INSERT INTO `config` VALUES (9, 'sys_toolbar_fullscreen', 'True', '显示工具栏全屏按钮', '2019-09-29 12:02:03', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-09-29 13:40:32', '39f08d5b-177c-a334-34e7-408ef121c6e0');
-INSERT INTO `config` VALUES (10, 'sys_toolbar_skin', 'True', '显示工具栏皮肤按钮', '2019-09-29 12:02:03', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-09-29 13:40:32', '39f08d5b-177c-a334-34e7-408ef121c6e0');
-INSERT INTO `config` VALUES (11, 'sys_toolbar_logout', 'True', '显示工具栏退出按钮', '2019-09-29 12:02:03', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-09-29 13:40:32', '39f08d5b-177c-a334-34e7-408ef121c6e0');
-INSERT INTO `config` VALUES (12, 'sys_toolbar_userinfo', 'True', '显示工具栏用户信息按钮', '2019-09-29 12:02:03', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-09-29 13:40:32', '39f08d5b-177c-a334-34e7-408ef121c6e0');
+INSERT INTO `config` VALUES (9, 'sys_toolbar_fullscreen', 'True', '全屏按钮', '2019-09-29 12:02:03', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 15:46:45', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `config` VALUES (10, 'sys_toolbar_skin', 'True', '皮肤设置按钮', '2019-09-29 12:02:03', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 15:46:45', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `config` VALUES (11, 'sys_toolbar_logout', 'True', '退出按钮', '2019-09-29 12:02:03', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 15:46:45', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `config` VALUES (12, 'sys_toolbar_userinfo', 'True', '用户信息按钮', '2019-09-29 12:02:03', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 15:46:45', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
 INSERT INTO `config` VALUES (13, 'sys_toolbar_customcss', '', '自定义CSS样式', '2019-09-29 12:02:03', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-09-29 13:40:32', '39f08d5b-177c-a334-34e7-408ef121c6e0');
+INSERT INTO `config` VALUES (14, 'sys_copyright', '版权所有：尼古拉斯·老李 | 用代码改变世界 Powered byET Core 3.0.0 on Linux', '版权声明', '2019-12-08 15:45:41', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 15:45:41', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `config` VALUES (15, 'sys_permission_button', 'True', '启用按钮权限', '2019-12-08 15:45:46', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 15:45:46', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `config` VALUES (16, 'sys_permission_auditing', 'True', '审计日志', '2019-12-08 15:45:46', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 15:45:46', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `config` VALUES (17, 'sys_login_type', 'neon', '登录页类型', '2019-12-08 15:45:51', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 15:46:42', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `config` VALUES (18, 'sys_login_verify_code', 'False', '启用验证码功能', '2019-12-08 15:45:51', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 15:46:42', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `config` VALUES (19, 'sys_component_menu_unique_opened', 'True', '菜单只能打开一个', '2019-12-08 15:46:49', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 15:46:49', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `config` VALUES (20, 'sys_component_dialog_close_on_click_modal', 'False', '是否可以点击模态框关闭', '2019-12-08 15:46:49', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 15:46:49', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `config` VALUES (21, 'sys_component_list_serial_number_name', '', '序号名称', '2019-12-08 15:46:49', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 15:46:49', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `config` VALUES (22, 'sys_component_custom_css', '', '自定义Css样式', '2019-12-08 15:46:49', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 15:46:49', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
 
 -- ----------------------------
 -- Table structure for menu
@@ -357,13 +373,13 @@ INSERT INTO `menu` VALUES ('39f08daf-8feb-d2ce-66dc-12fff451a969', 'Admin', 1, '
 INSERT INTO `menu` VALUES ('39f08daf-9b05-80d5-a7f5-21e450af9b70', 'Admin', 1, '39f08dac-9b84-9a56-20b9-26789223a74f', '角色管理', 'admin_role', '', '', '', 'role', '', 1, b'1', 0, 0, '', '', b'1', '', '2019-09-29 13:33:50', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-09-29 13:33:50', '39f08d5b-177c-a334-34e7-408ef121c6e0');
 INSERT INTO `menu` VALUES ('39f08daf-a689-5e91-dce9-e6d0088d29dc', 'Admin', 1, '39f08dac-9b84-9a56-20b9-26789223a74f', '账户管理', 'admin_account', '', '', '', 'user', '', 1, b'1', 0, 0, '', '', b'1', '', '2019-09-29 13:33:53', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-09-29 13:33:53', '39f08d5b-177c-a334-34e7-408ef121c6e0');
 INSERT INTO `menu` VALUES ('39f08daf-b44b-8fbf-3a88-629dc0922e84', 'Admin', 1, '39f08dac-9b84-9a56-20b9-26789223a74f', '审计日志', 'admin_auditinfo', '', '', '', 'log', '', 1, b'1', 0, 0, '', '', b'1', '', '2019-09-29 13:33:57', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-09-29 13:33:57', '39f08d5b-177c-a334-34e7-408ef121c6e0');
-INSERT INTO `menu` VALUES ('39f08daf-e02b-bd7b-be06-12eeee0f4da4', 'Admin', 1, '39f08dac-84e1-54e2-22ee-e5d7e3606f90', '系统配置', 'admin_system', '', '', '', 'system', '', 1, b'1', 0, 0, '', '', b'1', '', '2019-09-29 13:34:08', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-09-29 13:40:00', '39f08d5b-177c-a334-34e7-408ef121c6e0');
+INSERT INTO `menu` VALUES ('39f08daf-e02b-bd7b-be06-12eeee0f4da4', 'Admin', 1, '39f08dac-84e1-54e2-22ee-e5d7e3606f90', '系统配置', 'admin_system', '', '', '', 'system', '', 1, b'1', 0, 0, '', '', b'1', '', '2019-09-29 13:34:08', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 15:45:31', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
 INSERT INTO `menu` VALUES ('39f08daf-f8f6-2dad-42c0-c73c787c6def', 'Admin', 1, '39f08dac-84e1-54e2-22ee-e5d7e3606f90', '配置项', 'admin_config', '', '', '', 'tag', '', 1, b'1', 0, 0, '', '', b'1', '', '2019-09-29 13:34:14', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-09 15:15:07', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
 INSERT INTO `menu` VALUES ('39f08db0-067d-fc37-84cb-b5283891fcce', 'Admin', 1, '39f08dac-84e1-54e2-22ee-e5d7e3606f90', '图标管理', 'admin_icon', '', '', '', 'photo', '', 1, b'1', 0, 0, '', '', b'1', '', '2019-09-29 13:34:18', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-09 15:15:24', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
 INSERT INTO `menu` VALUES ('39f10ddc-b762-96c9-58a3-9ce21ae7ebcd', '', 2, '00000000-0000-0000-0000-000000000000', '官方文档', '', '', '', 'https://nm.iamoldli.com/docs', 'archives', '', 0, b'1', 3, 0, '', '', b'1', '', '2019-10-24 10:54:30', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-10-24 11:12:34', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
 INSERT INTO `menu` VALUES ('39f10dec-5ca4-43ac-d859-866faf013d4e', '', 0, '00000000-0000-0000-0000-000000000000', '任务调度', '', '', '', '', 'timer', '', 0, b'1', 0, -1, '', '', b'1', '', '2019-10-24 11:11:36', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-10-24 11:12:34', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `menu` VALUES ('39f10dec-9762-c2c4-1b3c-a89e1f38c3c4', 'Quartz', 1, '39f10dec-5ca4-43ac-d859-866faf013d4e', '任务组', 'quartz_group', '', '', '', 'basic-data', '', 1, b'1', 0, 0, '', '', b'1', '', '2019-10-24 11:11:51', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-10-24 11:12:22', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `menu` VALUES ('39f10dec-c7ed-47d0-5c74-70595ebd268d', 'Quartz', 1, '39f10dec-5ca4-43ac-d859-866faf013d4e', '任务列表', 'quartz_job', '', '', '', 'basic-data', '', 1, b'1', 0, 0, '', '', b'1', '', '2019-10-24 11:12:03', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-10-24 11:12:03', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `menu` VALUES ('39f10dec-9762-c2c4-1b3c-a89e1f38c3c4', 'Quartz', 1, '39f10dec-5ca4-43ac-d859-866faf013d4e', '任务分组', 'quartz_group', '', '', '', 'group', '', 1, b'1', 0, 0, '', '', b'1', '', '2019-10-24 11:11:51', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 15:44:33', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `menu` VALUES ('39f10dec-c7ed-47d0-5c74-70595ebd268d', 'Quartz', 1, '39f10dec-5ca4-43ac-d859-866faf013d4e', '任务列表', 'quartz_job', '', '', '', 'basic-data', '', 1, b'1', 0, 0, '', '', b'1', '', '2019-10-24 11:12:03', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 19:15:23', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
 
 -- ----------------------------
 -- Table structure for menu_permission
@@ -374,7 +390,7 @@ CREATE TABLE `menu_permission`  (
   `MenuCode` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `PermissionCode` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 37 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of menu_permission
@@ -395,11 +411,16 @@ INSERT INTO `menu_permission` VALUES (15, 'admin_account', 'admin_account_query_
 INSERT INTO `menu_permission` VALUES (16, 'admin_auditinfo', 'admin_auditinfo_query_get');
 INSERT INTO `menu_permission` VALUES (20, 'codegenerator_project', 'codegenerator_project_query_get');
 INSERT INTO `menu_permission` VALUES (21, 'codegenerator_enum', 'codegenerator_enum_query_get');
-INSERT INTO `menu_permission` VALUES (22, 'admin_system', 'admin_system_config_post');
-INSERT INTO `menu_permission` VALUES (23, 'admin_system', 'admin_system_uploadlogo_post');
 INSERT INTO `menu_permission` VALUES (24, 'admin_config', 'admin_config_query_get');
-INSERT INTO `menu_permission` VALUES (27, 'quartz_job', 'quartz_job_query_get');
-INSERT INTO `menu_permission` VALUES (28, 'quartz_group', 'quartz_group_query_get');
+INSERT INTO `menu_permission` VALUES (29, 'quartz_group', 'quartz_group_query_get');
+INSERT INTO `menu_permission` VALUES (31, 'admin_system', 'admin_system_updatebaseconfig_post');
+INSERT INTO `menu_permission` VALUES (32, 'admin_system', 'admin_system_updatecomponentconfig_post');
+INSERT INTO `menu_permission` VALUES (33, 'admin_system', 'admin_system_updateloginconfig_post');
+INSERT INTO `menu_permission` VALUES (34, 'admin_system', 'admin_system_updatepermissionconfig_post');
+INSERT INTO `menu_permission` VALUES (35, 'admin_system', 'admin_system_updatetoolbarconfig_post');
+INSERT INTO `menu_permission` VALUES (36, 'admin_system', 'admin_system_uploadlogo_post');
+INSERT INTO `menu_permission` VALUES (38, 'quartz_job', 'quartz_job_query_get');
+INSERT INTO `menu_permission` VALUES (39, 'quartz_job', 'quartz_job_jobhttpdetails_get');
 
 -- ----------------------------
 -- Table structure for moduleinfo
@@ -446,56 +467,66 @@ CREATE TABLE `permission`  (
 -- ----------------------------
 -- Records of permission
 -- ----------------------------
-INSERT INTO `permission` VALUES ('39f08d5b-d104-dad2-d611-3586643f34b7', '账户管理_绑定角色', 'Admin', 'Account', 'BindRole', 2, 'admin_account_bindrole_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d110-8a6f-5d0c-1acc4cd6e713', '账户管理_查询', 'Admin', 'Account', 'Query', 0, 'admin_account_query_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d11d-e539-b8e1-58967d8fd541', '账户管理_添加', 'Admin', 'Account', 'Add', 2, 'admin_account_add_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d131-df4d-fb47-2698f84c7cf6', '账户管理_编辑', 'Admin', 'Account', 'Edit', 0, 'admin_account_edit_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d136-91f1-39c4-eec8eb28f490', '账户管理_更新', 'Admin', 'Account', 'Update', 2, 'admin_account_update_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d149-b5a9-3e89-d13f3cedb1c6', '账户管理_删除', 'Admin', 'Account', 'Delete', 3, 'admin_account_delete_delete', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d158-c047-51d7-509b0606fd96', '账户管理_重置密码', 'Admin', 'Account', 'ResetPassword', 2, 'admin_account_resetpassword_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d175-9882-0f7c-fb2bae67f6c8', '审计信息_查询', 'Admin', 'AuditInfo', 'Query', 0, 'admin_auditinfo_query_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d1ae-0b50-d74d-23ea07538398', '审计信息_详情', 'Admin', 'AuditInfo', 'Details', 0, 'admin_auditinfo_details_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d1cc-e9c7-bd4d-da331764b4a3', '按钮管理_查询', 'Admin', 'Button', 'Query', 0, 'admin_button_query_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d1d6-55c8-3580-cda4932af779', '配置项管理_查询', 'Admin', 'Config', 'Query', 0, 'admin_config_query_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d1e0-65f2-73d4-8424438c8567', '配置项管理_添加', 'Admin', 'Config', 'Add', 2, 'admin_config_add_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d1e5-9e0e-0c29-ddf2a73482b8', '配置项管理_删除', 'Admin', 'Config', 'Delete', 3, 'admin_config_delete_delete', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d1ec-13f3-a1f5-23a2bc892d15', '配置项管理_编辑', 'Admin', 'Config', 'Edit', 0, 'admin_config_edit_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d1f1-f48b-9ebe-766fcb346c63', '配置项管理_修改', 'Admin', 'Config', 'Update', 2, 'admin_config_update_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d200-dee4-a526-d3422506a692', '菜单管理_菜单树', 'Admin', 'Menu', 'Tree', 0, 'admin_menu_tree_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d210-2150-33bc-f8b9b97d2b10', '菜单管理_查询菜单列表', 'Admin', 'Menu', 'Query', 0, 'admin_menu_query_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d21c-40fb-6de2-3bddb3a1682a', '菜单管理_添加', 'Admin', 'Menu', 'Add', 2, 'admin_menu_add_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d225-a13c-7b44-e8c3e7d3d128', '菜单管理_删除', 'Admin', 'Menu', 'Delete', 3, 'admin_menu_delete_delete', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d22e-ee56-933a-ed09cfb4a706', '菜单管理_编辑', 'Admin', 'Menu', 'Edit', 0, 'admin_menu_edit_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d236-7004-f0ca-925788da03aa', '菜单管理_更新', 'Admin', 'Menu', 'Update', 2, 'admin_menu_update_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d243-8f1a-7c50-6feeb098432e', '菜单管理_更新排序信息', 'Admin', 'Menu', 'Sort', 0, 'admin_menu_sort_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d24b-cfa0-96e6-9242c9cdff31', '菜单管理_更新排序信息', 'Admin', 'Menu', 'Sort', 2, 'admin_menu_sort_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d259-2ac7-dfa6-1bf0ae78e4f0', '模块信息_查询', 'Admin', 'ModuleInfo', 'Query', 0, 'admin_moduleinfo_query_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d264-13cc-1cc2-a4c2639e7fda', '模块信息_同步模块数据', 'Admin', 'ModuleInfo', 'Sync', 2, 'admin_moduleinfo_sync_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d269-43b8-2d42-48a8cf8a3c38', '模块信息_删除', 'Admin', 'ModuleInfo', 'Delete', 3, 'admin_moduleinfo_delete_delete', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d27d-241c-b966-5a4ce019fe3e', '权限接口_查询', 'Admin', 'Permission', 'Query', 0, 'admin_permission_query_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d286-6b4b-82cf-b8f4c8052fef', '权限接口_同步', 'Admin', 'Permission', 'Sync', 2, 'admin_permission_sync_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d28c-73c8-d195-f2de0713cbf3', '角色管理_查询', 'Admin', 'Role', 'Query', 0, 'admin_role_query_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d298-0e81-694f-723d60c55bda', '角色管理_添加', 'Admin', 'Role', 'Add', 2, 'admin_role_add_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d29d-7195-e52b-5b20e346f898', '角色管理_删除', 'Admin', 'Role', 'Delete', 3, 'admin_role_delete_delete', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d2a5-3475-50d1-d3984f82f5d3', '角色管理_编辑', 'Admin', 'Role', 'Edit', 0, 'admin_role_edit_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d2aa-77a2-7f52-72d9974f7020', '角色管理_修改', 'Admin', 'Role', 'Update', 2, 'admin_role_update_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d2b5-55c5-995d-17557580db07', '角色管理_获取角色的关联菜单列表', 'Admin', 'Role', 'MenuList', 0, 'admin_role_menulist_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d2b8-0db7-9575-bd6cd85f12b0', '角色管理_绑定菜单', 'Admin', 'Role', 'BindMenu', 2, 'admin_role_bindmenu_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d2bc-3e4d-3993-a7a34ef134af', '角色管理_获取角色关联的菜单按钮列表', 'Admin', 'Role', 'MenuButtonList', 0, 'admin_role_menubuttonlist_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d2c5-438b-194f-6b5f35cb587b', '角色管理_绑定菜单按钮', 'Admin', 'Role', 'BindMenuButton', 2, 'admin_role_bindmenubutton_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d104-dad2-d611-3586643f34b7', '账户管理_绑定角色', 'Admin', 'Account', 'BindRole', 2, 'admin_account_bindrole_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d110-8a6f-5d0c-1acc4cd6e713', '账户管理_查询', 'Admin', 'Account', 'Query', 0, 'admin_account_query_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d11d-e539-b8e1-58967d8fd541', '账户管理_添加', 'Admin', 'Account', 'Add', 2, 'admin_account_add_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d131-df4d-fb47-2698f84c7cf6', '账户管理_编辑', 'Admin', 'Account', 'Edit', 0, 'admin_account_edit_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d136-91f1-39c4-eec8eb28f490', '账户管理_更新', 'Admin', 'Account', 'Update', 2, 'admin_account_update_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d149-b5a9-3e89-d13f3cedb1c6', '账户管理_删除', 'Admin', 'Account', 'Delete', 3, 'admin_account_delete_delete', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d158-c047-51d7-509b0606fd96', '账户管理_重置密码', 'Admin', 'Account', 'ResetPassword', 2, 'admin_account_resetpassword_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d175-9882-0f7c-fb2bae67f6c8', '审计信息_查询', 'Admin', 'AuditInfo', 'Query', 0, 'admin_auditinfo_query_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d1ae-0b50-d74d-23ea07538398', '审计信息_详情', 'Admin', 'AuditInfo', 'Details', 0, 'admin_auditinfo_details_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d1cc-e9c7-bd4d-da331764b4a3', '按钮管理_查询', 'Admin', 'Button', 'Query', 0, 'admin_button_query_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d1d6-55c8-3580-cda4932af779', '配置项管理_查询', 'Admin', 'Config', 'Query', 0, 'admin_config_query_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d1e0-65f2-73d4-8424438c8567', '配置项管理_添加', 'Admin', 'Config', 'Add', 2, 'admin_config_add_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d1e5-9e0e-0c29-ddf2a73482b8', '配置项管理_删除', 'Admin', 'Config', 'Delete', 3, 'admin_config_delete_delete', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d1ec-13f3-a1f5-23a2bc892d15', '配置项管理_编辑', 'Admin', 'Config', 'Edit', 0, 'admin_config_edit_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d1f1-f48b-9ebe-766fcb346c63', '配置项管理_修改', 'Admin', 'Config', 'Update', 2, 'admin_config_update_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d200-dee4-a526-d3422506a692', '菜单管理_菜单树', 'Admin', 'Menu', 'Tree', 0, 'admin_menu_tree_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d210-2150-33bc-f8b9b97d2b10', '菜单管理_查询菜单列表', 'Admin', 'Menu', 'Query', 0, 'admin_menu_query_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d21c-40fb-6de2-3bddb3a1682a', '菜单管理_添加', 'Admin', 'Menu', 'Add', 2, 'admin_menu_add_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d225-a13c-7b44-e8c3e7d3d128', '菜单管理_删除', 'Admin', 'Menu', 'Delete', 3, 'admin_menu_delete_delete', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d22e-ee56-933a-ed09cfb4a706', '菜单管理_编辑', 'Admin', 'Menu', 'Edit', 0, 'admin_menu_edit_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d236-7004-f0ca-925788da03aa', '菜单管理_更新', 'Admin', 'Menu', 'Update', 2, 'admin_menu_update_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d243-8f1a-7c50-6feeb098432e', '菜单管理_更新排序信息', 'Admin', 'Menu', 'Sort', 0, 'admin_menu_sort_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d24b-cfa0-96e6-9242c9cdff31', '菜单管理_更新排序信息', 'Admin', 'Menu', 'Sort', 2, 'admin_menu_sort_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d259-2ac7-dfa6-1bf0ae78e4f0', '模块信息_查询', 'Admin', 'ModuleInfo', 'Query', 0, 'admin_moduleinfo_query_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d264-13cc-1cc2-a4c2639e7fda', '模块信息_同步模块数据', 'Admin', 'ModuleInfo', 'Sync', 2, 'admin_moduleinfo_sync_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d269-43b8-2d42-48a8cf8a3c38', '模块信息_删除', 'Admin', 'ModuleInfo', 'Delete', 3, 'admin_moduleinfo_delete_delete', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d27d-241c-b966-5a4ce019fe3e', '权限接口_查询', 'Admin', 'Permission', 'Query', 0, 'admin_permission_query_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d286-6b4b-82cf-b8f4c8052fef', '权限接口_同步', 'Admin', 'Permission', 'Sync', 2, 'admin_permission_sync_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d28c-73c8-d195-f2de0713cbf3', '角色管理_查询', 'Admin', 'Role', 'Query', 0, 'admin_role_query_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d298-0e81-694f-723d60c55bda', '角色管理_添加', 'Admin', 'Role', 'Add', 2, 'admin_role_add_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d29d-7195-e52b-5b20e346f898', '角色管理_删除', 'Admin', 'Role', 'Delete', 3, 'admin_role_delete_delete', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d2a5-3475-50d1-d3984f82f5d3', '角色管理_编辑', 'Admin', 'Role', 'Edit', 0, 'admin_role_edit_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d2aa-77a2-7f52-72d9974f7020', '角色管理_修改', 'Admin', 'Role', 'Update', 2, 'admin_role_update_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d2b5-55c5-995d-17557580db07', '角色管理_获取角色的关联菜单列表', 'Admin', 'Role', 'MenuList', 0, 'admin_role_menulist_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d2b8-0db7-9575-bd6cd85f12b0', '角色管理_绑定菜单', 'Admin', 'Role', 'BindMenu', 2, 'admin_role_bindmenu_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d2bc-3e4d-3993-a7a34ef134af', '角色管理_获取角色关联的菜单按钮列表', 'Admin', 'Role', 'MenuButtonList', 0, 'admin_role_menubuttonlist_get', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d2c5-438b-194f-6b5f35cb587b', '角色管理_绑定菜单按钮', 'Admin', 'Role', 'BindMenuButton', 2, 'admin_role_bindmenubutton_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
 INSERT INTO `permission` VALUES ('39f08d5b-d2cd-b7a0-c335-9b298cb1a765', '系统_修改系统配置', 'Admin', 'System', 'Config', 2, 'admin_system_config_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f08d5b-d2d4-846e-7503-ee323474339d', '系统_上传Logo', 'Admin', 'System', 'UploadLogo', 2, 'admin_system_uploadlogo_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-10-24 11:11:18', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f10dec-1776-d2ab-f8f6-c64dcb4831d1', '任务组管理_查询', 'Quartz', 'Group', 'Query', 0, 'quartz_group_query_get', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f10dec-1781-7618-3d69-4a4bc89287ac', '任务组管理_添加', 'Quartz', 'Group', 'Add', 2, 'quartz_group_add_post', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f10dec-1787-105f-5755-ac9c411e644d', '任务组管理_删除', 'Quartz', 'Group', 'Delete', 3, 'quartz_group_delete_delete', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f10dec-178e-af5a-c275-9671c131e932', '任务管理_查询', 'Quartz', 'Job', 'Query', 0, 'quartz_job_query_get', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f10dec-1794-9240-87a5-f3d3db625666', '任务管理_添加', 'Quartz', 'Job', 'Add', 2, 'quartz_job_add_post', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f10dec-179a-c1d4-34f6-077b53257af4', '任务管理_编辑', 'Quartz', 'Job', 'Edit', 0, 'quartz_job_edit_get', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f10dec-17a1-4580-9ec4-1d60229302f7', '任务管理_修改', 'Quartz', 'Job', 'Update', 2, 'quartz_job_update_post', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f10dec-17a7-e60a-e7b7-525236816794', '任务管理_删除', 'Quartz', 'Job', 'Delete', 3, 'quartz_job_delete_delete', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f10dec-17af-b281-0426-35c73dcd0272', '任务管理_暂停', 'Quartz', 'Job', 'Pause', 2, 'quartz_job_pause_post', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f10dec-17b6-048a-b68a-bc9f8265d1a7', '任务管理_启动', 'Quartz', 'Job', 'Resume', 2, 'quartz_job_resume_post', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
-INSERT INTO `permission` VALUES ('39f10dec-17bf-6fda-ad46-eaf85283d8ae', '任务管理_日志', 'Quartz', 'Job', 'Log', 0, 'quartz_job_log_get', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f08d5b-d2d4-846e-7503-ee323474339d', '系统_上传Logo', 'Admin', 'System', 'UploadLogo', 2, 'admin_system_uploadlogo_post', '2019-09-29 12:02:19', '39f08d5b-177c-a334-34e7-408ef121c6e0', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f10dec-1776-d2ab-f8f6-c64dcb4831d1', '任务组管理_查询', 'Quartz', 'Group', 'Query', 0, 'quartz_group_query_get', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f10dec-1781-7618-3d69-4a4bc89287ac', '任务组管理_添加', 'Quartz', 'Group', 'Add', 2, 'quartz_group_add_post', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f10dec-1787-105f-5755-ac9c411e644d', '任务组管理_删除', 'Quartz', 'Group', 'Delete', 3, 'quartz_group_delete_delete', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f10dec-178e-af5a-c275-9671c131e932', '任务管理_查询', 'Quartz', 'Job', 'Query', 0, 'quartz_job_query_get', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f10dec-1794-9240-87a5-f3d3db625666', '任务管理_添加', 'Quartz', 'Job', 'Add', 2, 'quartz_job_add_post', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f10dec-179a-c1d4-34f6-077b53257af4', '任务管理_编辑', 'Quartz', 'Job', 'Edit', 0, 'quartz_job_edit_get', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f10dec-17a1-4580-9ec4-1d60229302f7', '任务管理_修改', 'Quartz', 'Job', 'Update', 2, 'quartz_job_update_post', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f10dec-17a7-e60a-e7b7-525236816794', '任务管理_删除', 'Quartz', 'Job', 'Delete', 3, 'quartz_job_delete_delete', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f10dec-17af-b281-0426-35c73dcd0272', '任务管理_暂停', 'Quartz', 'Job', 'Pause', 2, 'quartz_job_pause_post', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f10dec-17b6-048a-b68a-bc9f8265d1a7', '任务管理_回复', 'Quartz', 'Job', 'Resume', 2, 'quartz_job_resume_post', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f10dec-17bf-6fda-ad46-eaf85283d8ae', '任务管理_日志', 'Quartz', 'Job', 'Log', 0, 'quartz_job_log_get', '2019-10-24 11:11:17', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f1f6a4-2eb0-edd4-d80f-a3896f696feb', '系统_修改系统基础配置', 'Admin', 'System', 'UpdateBaseConfig', 2, 'admin_system_updatebaseconfig_post', '2019-12-08 15:44:16', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f1f6a4-2ed2-6b48-4950-ee5da74e816a', '系统_修改系统组件配置', 'Admin', 'System', 'UpdateComponentConfig', 2, 'admin_system_updatecomponentconfig_post', '2019-12-08 15:44:16', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f1f6a4-2ed9-9c84-0fe3-ea0236d3f8ef', '系统_修改系统登录配置', 'Admin', 'System', 'UpdateLoginConfig', 2, 'admin_system_updateloginconfig_post', '2019-12-08 15:44:16', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f1f6a4-2ee3-55bc-9b92-77829092bc6f', '系统_修改系统权限配置', 'Admin', 'System', 'UpdatePermissionConfig', 2, 'admin_system_updatepermissionconfig_post', '2019-12-08 15:44:16', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f1f6a4-2eea-e3f9-415c-b725fd5908e4', '系统_修改系统权限配置', 'Admin', 'System', 'UpdateToolbarConfig', 2, 'admin_system_updatetoolbarconfig_post', '2019-12-08 15:44:16', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f1f6a4-2f6f-f04d-667f-808dccc29a37', '任务管理_添加HTTP任务', 'Quartz', 'Job', 'AddHttpJob', 2, 'quartz_job_addhttpjob_post', '2019-12-08 15:44:16', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f1f6a4-2f79-0e96-08d2-2940bb9b4786', '任务管理_编辑HTTP任务', 'Quartz', 'Job', 'EditHttpJob', 0, 'quartz_job_edithttpjob_get', '2019-12-08 15:44:16', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f1f6a4-2f83-940c-7c26-d680dc901a93', '任务管理_修改HTTP任务', 'Quartz', 'Job', 'UpdateHttpJob', 2, 'quartz_job_updatehttpjob_post', '2019-12-08 15:44:16', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f1f6c4-726f-ac04-8533-b619a4b90b99', '任务管理_停止', 'Quartz', 'Job', 'Stop', 2, 'quartz_job_stop_post', '2019-12-08 16:19:30', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
+INSERT INTO `permission` VALUES ('39f1f765-5739-6fa3-536f-fa48f3345048', '任务管理_HTTP任务详情', 'Quartz', 'Job', 'JobHttpDetails', 0, 'quartz_job_jobhttpdetails_get', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a', '2019-12-08 19:15:15', '2e23d1d9-4a72-acc2-f6ff-39ed21cb6a4a');
 
 -- ----------------------------
 -- Table structure for role
@@ -530,7 +561,7 @@ CREATE TABLE `role_menu`  (
   `RoleId` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `MenuId` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 122 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of role_menu
@@ -562,7 +593,7 @@ CREATE TABLE `role_menu_button`  (
   `MenuId` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `ButtonId` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 56 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 64 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of role_menu_button
@@ -594,5 +625,24 @@ INSERT INTO `role_menu_button` VALUES (60, '39f08d5b-173b-1cbb-7381-407c87b2e8e2
 INSERT INTO `role_menu_button` VALUES (61, '39f08d5b-173b-1cbb-7381-407c87b2e8e2', '39f10dec-c7ed-47d0-5c74-70595ebd268d', '39f08daf-44ba-da99-4a81-8dcc78efcf82');
 INSERT INTO `role_menu_button` VALUES (62, '39f08d5b-173b-1cbb-7381-407c87b2e8e2', '39f10dec-c7ed-47d0-5c74-70595ebd268d', '39f08daf-44c9-7fe4-defd-0939a64171cd');
 INSERT INTO `role_menu_button` VALUES (63, '39f08d5b-173b-1cbb-7381-407c87b2e8e2', '39f10dec-c7ed-47d0-5c74-70595ebd268d', '39f08daf-44cd-0154-5dcd-f428972e22f2');
+INSERT INTO `role_menu_button` VALUES (64, '39f08d5b-173b-1cbb-7381-407c87b2e8e2', '39f10dec-c7ed-47d0-5c74-70595ebd268d', '39f1f6c4-8bca-87e8-14fc-20ec32c73e24');
+
+-- ----------------------------
+-- Table structure for tenant
+-- ----------------------------
+DROP TABLE IF EXISTS `tenant`;
+CREATE TABLE `tenant`  (
+  `Id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Remarks` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `CreatedTime` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
+  `CreatedBy` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `ModifiedTime` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
+  `ModifiedBy` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Deleted` bit(1) NOT NULL DEFAULT b'0',
+  `DeletedTime` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
+  `DeletedBy` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`Id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;

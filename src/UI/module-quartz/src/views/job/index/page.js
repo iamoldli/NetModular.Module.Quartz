@@ -1,11 +1,11 @@
 /** 页面信息 */
-const page = new function() {
+const page = new (function() {
   this.title = '任务列表'
   this.name = 'quartz_job'
   this.path = '/quartz/job'
 
   // 关联权限
-  this.permissions = [`${this.name}_query_get`]
+  this.permissions = [`${this.name}_query_get`, `${this.name}_JobHttpDetails_get`]
 
   // 按钮
   this.buttons = {
@@ -14,14 +14,14 @@ const page = new function() {
       type: 'success',
       icon: 'add',
       code: `${this.name}_add`,
-      permissions: [`${this.name}_add_post`]
+      permissions: [`${this.name}_add_post`, `${this.name}_addhttpjob_post`]
     },
     edit: {
       text: '编辑',
       type: 'text',
       icon: 'edit',
       code: `${this.name}_edit`,
-      permissions: [`${this.name}_edit_get`, `${this.name}_update_post`]
+      permissions: [`${this.name}_edit_get`, `${this.name}_update_post`, `${this.name}_edithttpjob_get`, `${this.name}_updatehttpjob_post`]
     },
     pause: {
       text: '暂停',
@@ -36,6 +36,13 @@ const page = new function() {
       icon: 'run',
       code: `${this.name}_resume`,
       permissions: [`${this.name}_resume_post`]
+    },
+    stop: {
+      text: '停止',
+      type: 'text',
+      icon: 'stop',
+      code: `${this.name}_stop`,
+      permissions: [`${this.name}_stop_post`]
     },
     log: {
       text: '日志',
@@ -52,7 +59,7 @@ const page = new function() {
       permissions: [`${this.name}_delete_delete`]
     }
   }
-}()
+})()
 
 /** 路由信息 */
 export const route = {

@@ -5,7 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NetModular.Lib.Quartz.Core" Version="1.5.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.0" />
+    <PackageReference Include="NetModular.Lib.Quartz.Core" Version="1.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
 </Project>

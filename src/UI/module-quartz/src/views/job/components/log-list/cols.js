@@ -12,7 +12,7 @@ export default [
   {
     name: 'createdTime',
     label: '时间',
-    width: 150
+    width: 180
   },
   {
     name: 'msg',

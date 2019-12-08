@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost
+ Source Server         : nm-quartz-mysql
  Source Server Type    : MySQL
- Source Server Version : 80015
- Source Host           : localhost:3306
+ Source Server Version : 80018
+ Source Host           : localhost:27223
  Source Schema         : nm_quartz
 
  Target Server Type    : MySQL
- Target Server Version : 80015
+ Target Server Version : 80018
  File Encoding         : 65001
 
- Date: 29/09/2019 15:02:28
+ Date: 08/12/2019 19:25:21
 */
 
 SET NAMES utf8mb4;
@@ -39,6 +39,7 @@ DROP TABLE IF EXISTS `job`;
 CREATE TABLE `job`  (
   `Id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `ModuleCode` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `JobType` smallint(3) NOT NULL DEFAULT 0,
   `JobKey` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `Group` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `Name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -59,6 +60,23 @@ CREATE TABLE `job`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Table structure for job_http
+-- ----------------------------
+DROP TABLE IF EXISTS `job_http`;
+CREATE TABLE `job_http`  (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `JobId` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Url` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `Method` smallint(3) NOT NULL DEFAULT 0,
+  `AuthType` smallint(3) NOT NULL DEFAULT 0,
+  `Token` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `ContentType` smallint(3) NOT NULL DEFAULT 0,
+  `Parameters` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `Headers` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  PRIMARY KEY (`Id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
 -- Table structure for job_log
 -- ----------------------------
 DROP TABLE IF EXISTS `job_log`;
@@ -69,7 +87,7 @@ CREATE TABLE `job_log`  (
   `Msg` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `CreatedTime` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
   PRIMARY KEY (`Id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 409 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for qrtz_blob_triggers

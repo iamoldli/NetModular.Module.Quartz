@@ -19,6 +19,8 @@
     //表前缀
     "TablePrefix": "QRTZ_",
     //序列化方式
-    "SerializerType": "JSON"
+    "SerializerType": "JSON",
+    //是否禁用日志
+    "DisabledLogger": false 
   }
 }

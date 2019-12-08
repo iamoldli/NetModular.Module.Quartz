@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿
+using Microsoft.Extensions.Hosting;
 using NetModular.Lib.Host.Web;
 
 namespace NetModular.Module.Quartz.WebHost

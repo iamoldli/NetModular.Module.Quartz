@@ -6,11 +6,12 @@
 
   <ItemGroup>
     <PackageReference Include="NetModular.Lib.Mapper.AutoMapper" Version="1.5.0" />
-    <PackageReference Include="NetModular.Lib.Quartz.Abstractions" Version="1.5.0" />
+    <PackageReference Include="NetModular.Lib.Quartz.Abstractions" Version="1.5.1" />
   </ItemGroup>
   
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\Quartz\Quartz.csproj" />
   </ItemGroup>
 
 </Project>

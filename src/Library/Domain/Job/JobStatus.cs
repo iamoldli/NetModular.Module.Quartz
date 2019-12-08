@@ -7,6 +7,8 @@ namespace NetModular.Module.Quartz.Domain.Job
     /// </summary>
     public enum JobStatus
     {
+        [Description("停止")]
+        Stop,
         [Description("运行")]
         Running,
         [Description("暂停")]

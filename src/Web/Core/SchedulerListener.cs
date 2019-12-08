@@ -1,6 +1,5 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
 using NetModular.Module.Quartz.Domain.Job;
 using Quartz;
 
@@ -8,12 +7,10 @@ namespace NetModular.Module.Quartz.Web.Core
 {
     public class SchedulerListener : ISchedulerListener
     {
-        private readonly ILogger _logger;
         private readonly IJobRepository _repository;
 
-        public SchedulerListener(ILogger<SchedulerListener> logger, IJobRepository repository)
+        public SchedulerListener(IJobRepository repository)
         {
-            _logger = logger;
             _repository = repository;
         }
 
@@ -54,17 +51,20 @@ namespace NetModular.Module.Quartz.Web.Core
 
         public Task JobAdded(IJobDetail jobDetail, CancellationToken cancellationToken = default)
         {
-            return Task.CompletedTask;
+            return _repository.UpdateStatus(jobDetail.Key.Group, jobDetail.Key.Name, JobStatus.Running);
         }
 
         public async Task JobDeleted(JobKey jobKey, CancellationToken cancellationToken = default)
         {
-            await _repository.UpdateStatus(jobKey.ToString(), JobStatus.Completed);
+            //当调度删除任务时，如果任务状态不是已停止，则表示任务已完成，需修改对应状态
+            if (!await _repository.HasStop(jobKey.Group, jobKey.Name))
+                await _repository.UpdateStatus(jobKey.Group, jobKey.Name, JobStatus.Completed);
         }
 
         public Task JobPaused(JobKey jobKey, CancellationToken cancellationToken = default)
         {
-            return Task.CompletedTask;
+            //暂停
+            return _repository.UpdateStatus(jobKey.Group, jobKey.Name, JobStatus.Pause);
         }
 
         public Task JobInterrupted(JobKey jobKey, CancellationToken cancellationToken = default)
@@ -79,7 +79,8 @@ namespace NetModular.Module.Quartz.Web.Core
 
         public Task JobResumed(JobKey jobKey, CancellationToken cancellationToken = default)
         {
-            return Task.CompletedTask;
+            //恢复
+            return _repository.UpdateStatus(jobKey.Group, jobKey.Name, JobStatus.Running);
         }
 
         public Task JobsResumed(string jobGroup, CancellationToken cancellationToken = default)

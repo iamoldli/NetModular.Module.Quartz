@@ -8,7 +8,14 @@ export default name => {
     jobSelect: root + 'JobSelect',
     pause: root + 'Pause',
     resume: root + 'Resume',
-    log: root + 'log'
+    stop: root + 'Stop',
+    log: root + 'log',
+    addHttpJob: root + 'AddHttpJob',
+    authTypeSelect: root + 'AuthTypeSelect',
+    contentTypeSelect: root + 'contentTypeSelect',
+    editHttpJob: root + 'editHttpJob',
+    updateHttpJob: root + 'updateHttpJob',
+    jobHttpDetails: root + 'jobHttpDetails'
   }
 
   const moduleSelect = () => {
@@ -27,16 +34,49 @@ export default name => {
     return $http.post(urls.resume + '?id=' + id)
   }
 
+  const stop = id => {
+    return $http.post(urls.stop + '?id=' + id)
+  }
+
   const log = params => {
     return $http.get(urls.log, params)
   }
 
+  const addHttpJob = params => {
+    return $http.post(urls.addHttpJob, params)
+  }
+
+  const authTypeSelect = () => {
+    return $http.get(urls.authTypeSelect)
+  }
+
+  const contentTypeSelect = () => {
+    return $http.get(urls.contentTypeSelect)
+  }
+
+  const editHttpJob = id => {
+    return $http.get(urls.editHttpJob, { id })
+  }
+
+  const updateHttpJob = params => {
+    return $http.post(urls.updateHttpJob, params)
+  }
+  const jobHttpDetails = id => {
+    return $http.get(urls.jobHttpDetails, { id })
+  }
   return {
     ...crud,
     moduleSelect,
     jobSelect,
     pause,
     resume,
-    log
+    stop,
+    log,
+    addHttpJob,
+    authTypeSelect,
+    contentTypeSelect,
+    editHttpJob,
+    updateHttpJob,
+    jobHttpDetails
   }
 }

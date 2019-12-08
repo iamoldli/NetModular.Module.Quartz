@@ -27,6 +27,11 @@ namespace NetModular.Module.Quartz.Infrastructure.Options
         /// </summary>
         public string SerializerType { get; set; }
 
+        /// <summary>
+        /// 是否禁用日志
+        /// </summary>
+        public bool DisabledLogger { get; set; }
+
         public QuartzOptions()
         {
             InstanceName = "QuartzServer";

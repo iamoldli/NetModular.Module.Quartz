@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 #endif
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
-#if NETCOREAPP3_0
+#if NETCOREAPP3_1
 using Microsoft.Extensions.Hosting;
 #endif
 using Microsoft.Extensions.Options;
@@ -28,7 +28,12 @@ namespace NetModular.Module.Quartz.Web
         /// 注入服务
         /// </summary>
         /// <param name="services"></param>
-        public void ConfigureServices(IServiceCollection services)
+        /// <param name="env"></param>
+#if NETSTANDARD2_0
+        public void ConfigureServices(IServiceCollection services, IHostingEnvironment env)
+#elif NETCOREAPP3_1
+        public void ConfigureServices(IServiceCollection services, IHostEnvironment env)
+#endif
         {
             var sp = services.BuildServiceProvider();
             var options = sp.GetService<IOptionsMonitor<QuartzOptions>>().CurrentValue;
@@ -38,7 +43,7 @@ namespace NetModular.Module.Quartz.Web
 
             var dbOptions = sp.GetService<DbOptions>();
 
-            services.AddTransient<IJobLogger, JobLogger>();
+            services.AddSingleton<IJobLogger, JobLogger>();
             services.AddSingleton<ISchedulerListener, SchedulerListener>();
 
             var quartzProps = GetQuartzProps(options, dbOptions);
@@ -53,7 +58,7 @@ namespace NetModular.Module.Quartz.Web
         /// <param name="env"></param>
 #if NETSTANDARD2_0
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-#elif NETCOREAPP3_0
+#elif NETCOREAPP3_1
         public void Configure(IApplicationBuilder app, IHostEnvironment env)
 #endif
         {

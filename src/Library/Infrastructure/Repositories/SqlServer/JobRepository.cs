@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -50,9 +51,19 @@ namespace NetModular.Module.Quartz.Infrastructure.Repositories.SqlServer
             return Db.Find(m => m.Group == group).ExistsAsync();
         }
 
-        public Task<bool> UpdateStatus(string jobKey, JobStatus status)
+        public Task<bool> UpdateStatus(string group, string code, JobStatus status)
         {
-            return Db.Find(m => m.JobKey == jobKey).UpdateAsync(m => new JobEntity { Status = status }, false);
+            return Db.Find(m => m.Group == group && m.Code == code).UpdateAsync(m => new JobEntity { Status = status }, false);
+        }
+
+        public Task<bool> UpdateStatus(Guid id, JobStatus status, IUnitOfWork uow = null)
+        {
+            return Db.Find(m => m.Id == id).UseUow(uow).UpdateAsync(m => new JobEntity { Status = status }, false);
+        }
+
+        public Task<bool> HasStop(string @group, string code)
+        {
+            return Db.Find(m => m.Group == group && m.Code == code && m.Status == JobStatus.Stop).ExistsAsync();
         }
     }
 }

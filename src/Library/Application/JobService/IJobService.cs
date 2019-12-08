@@ -60,10 +60,44 @@ namespace NetModular.Module.Quartz.Application.JobService
         Task<IResultModel> Resume(Guid id);
 
         /// <summary>
+        /// 停止
+        /// </summary>
+        /// <returns></returns>
+        Task<IResultModel> Stop(Guid id);
+
+        /// <summary>
         /// 查询日志
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
         Task<IResultModel> Log(JobLogQueryModel model);
+
+        /// <summary>
+        /// 添加Http请求任务
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        Task<IResultModel> AddHttpJob(JobHttpAddModel model);
+
+        /// <summary>
+        /// 编辑Http请求任务
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Task<IResultModel> EditHttpJob(Guid id);
+
+        /// <summary>
+        /// 更新Http请求任务
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        Task<IResultModel> UpdateHttpJob(JobHttpUpdateModel model);
+
+        /// <summary>
+        /// HTTP任务详情
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Task<IResultModel> JobHttpDetails(Guid id);
     }
 }

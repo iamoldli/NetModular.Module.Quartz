@@ -6,6 +6,7 @@ using NetModular.Lib.Module.Abstractions;
 using NetModular.Lib.Utils.Core.Attributes;
 using NetModular.Lib.Utils.Core.Extensions;
 using NetModular.Lib.Utils.Core.Result;
+using NetModular.Module.Quartz.Quartz;
 using Quartz;
 
 namespace NetModular.Module.Quartz.Web.Core
@@ -50,7 +51,7 @@ namespace NetModular.Module.Quartz.Web.Core
 
                 if (module.AssemblyDescriptor.Quartz != null)
                 {
-                    var jobClassTypes = module.AssemblyDescriptor.Quartz.GetTypes().Where(m => typeof(IJob).IsAssignableFrom(m));
+                    var jobClassTypes = module.AssemblyDescriptor.Quartz.GetTypes().Where(m => m != typeof(HttpJob) && typeof(IJob).IsAssignableFrom(m));
                     foreach (var jobClassType in jobClassTypes)
                     {
                         var jobClassOption = new OptionResultModel

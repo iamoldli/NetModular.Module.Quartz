@@ -1,5 +1,19 @@
 <template>
-  <nm-form-dialog ref="form" v-bind="form" :rules="rules" v-on="on" :visible.sync="visible_">
+  <nm-form-page ref="form" v-bind="form" @success="onSuccess" :rules="rules">
+    <el-row>
+      <el-col :span="20" :offset="1">
+        <el-form-item label="所属模块：" prop="moduleCode">
+          <module-select v-model="form.model.moduleCode" />
+        </el-form-item>
+        <el-form-item label="任务类名：" prop="jobClass">
+          <job-select :module-id="form.model.moduleCode" v-model="form.model.jobClass">
+            <template v-slot:default="{ options }">
+              <el-option v-for="item in options" :key="item.value" :label="`${item.label} (${item.value})`" :value="item.value"></el-option>
+            </template>
+          </job-select>
+        </el-form-item>
+      </el-col>
+    </el-row>
     <el-row>
       <el-col :span="10" :offset="1">
         <el-form-item label="任务分组：" prop="group">
@@ -7,10 +21,10 @@
         </el-form-item>
       </el-col>
       <el-col :span="10">
-        <el-form-item label="触发器类型：" prop="triggerType">
-          <el-radio-group v-model="form.model.triggerType">
-            <el-radio :label="0">简单触发器</el-radio>
-            <el-radio :label="1">CRON触发器</el-radio>
+        <el-form-item label="触发器：" prop="triggerType">
+          <el-radio-group v-model="form.model.triggerType" size="small">
+            <el-radio-button :label="0">通用</el-radio-button>
+            <el-radio-button :label="1">CRON</el-radio-button>
           </el-radio-group>
         </el-form-item>
       </el-col>
@@ -28,20 +42,6 @@
       </el-col>
     </el-row>
     <el-row>
-      <el-col :span="20" :offset="1">
-        <el-form-item label="模块：" prop="moduleCode">
-          <module-select v-model="form.model.moduleCode" />
-        </el-form-item>
-        <el-form-item label="任务类：" prop="jobClass">
-          <job-select :module-id="form.model.moduleCode" v-model="form.model.jobClass">
-            <template v-slot:default="{options}">
-              <el-option v-for="item in options" :key="item.value" :label="`${item.label} (${item.value})`" :value="item.value"></el-option>
-            </template>
-          </job-select>
-        </el-form-item>
-      </el-col>
-    </el-row>
-    <el-row>
       <el-col :span="10" :offset="1">
         <el-form-item label="开始日期：" prop="beginDate">
           <el-date-picker v-model="form.model.beginDate" type="date" placeholder="选择日期" value-format="yyyy-MM-dd"></el-date-picker>
@@ -53,7 +53,7 @@
         </el-form-item>
       </el-col>
     </el-row>
-    <el-row v-if="form.model.triggerType===0">
+    <el-row v-if="form.model.triggerType === 0">
       <el-col :span="10" :offset="1">
         <el-form-item label="间隔时间：" prop="interval">
           <el-input v-model.number="form.model.interval" placeholder="请输入执行时间间隔">
@@ -76,27 +76,23 @@
         </el-form-item>
       </el-col>
     </el-row>
-  </nm-form-dialog>
+  </nm-form-page>
 </template>
 <script>
-import { mixins } from 'netmodular-ui'
-import ModuleSelect from '../module-select'
-import JobSelect from '../job-select'
-import GroupSelect from '../../../group/components/select'
+import ModuleSelect from '../../module-select'
+import JobSelect from '../../job-select'
+import GroupSelect from '../../../../group/components/select'
 
 const api = $api.quartz.job
 
 export default {
-  mixins: [mixins.formDialogEdit],
   components: { ModuleSelect, JobSelect, GroupSelect },
   data() {
     return {
-      api,
       form: {
-        title: '编辑任务',
-        width: '900px',
+        header: false,
         labelWidth: '120px',
-        action: api.update,
+        action: api.add,
         model: {
           moduleCode: '',
           jobClass: '',
@@ -126,12 +122,28 @@ export default {
       }
 
       if (this.form.model.triggerType === 0) {
-        rules['interval'] = [{ required: true, message: '请输入执行间隔时间', trigger: 'blur' }, { type: 'integer', min: 1, message: '请输入整数且不能小于1', trigger: 'blur' }]
-        rules['repeatCount'] = [{ required: true, message: '请输入执行次数', trigger: 'blur' }, { type: 'integer', min: 0, message: '请输入整数且不能小于0', trigger: 'blur' }]
+        rules['interval'] = [
+          { required: true, message: '请输入执行间隔时间', trigger: 'blur' },
+          { type: 'integer', min: 1, message: '请输入整数且不能小于1', trigger: 'blur' }
+        ]
+        rules['repeatCount'] = [
+          { required: true, message: '请输入执行次数', trigger: 'blur' },
+          { type: 'integer', min: 0, message: '请输入整数且不能小于0', trigger: 'blur' }
+        ]
       } else {
         rules['cron'] = [{ required: true, message: '请输入CRON表达式', trigger: 'blur' }]
       }
       return rules
+    }
+  },
+  methods: {
+    onSuccess() {
+      this.$emit('success')
+    },
+    reset() {
+      this.$nextTick(() => {
+        this.$refs.form.reset()
+      })
     }
   }
 }
