@@ -62,6 +62,8 @@ namespace NetModular.Module.Quartz.Web
         public void Configure(IApplicationBuilder app, IHostEnvironment env)
 #endif
         {
+            //启动
+            app.StartQuartz();
         }
 
         /// <summary>
