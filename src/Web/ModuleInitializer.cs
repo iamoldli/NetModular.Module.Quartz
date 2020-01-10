@@ -62,6 +62,11 @@ namespace NetModular.Module.Quartz.Web
         public void Configure(IApplicationBuilder app, IHostEnvironment env)
 #endif
         {
+            var options = app.ApplicationServices.GetService<IOptionsMonitor<QuartzOptions>>().CurrentValue;
+            //未启用
+            if (!options.Enabled)
+                return;
+
             //启动
             app.StartQuartz();
         }
