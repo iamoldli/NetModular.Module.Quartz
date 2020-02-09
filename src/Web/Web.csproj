@@ -1,21 +1,29 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netcoreapp3.1</TargetFrameworks>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NetModular.Lib.Auth.Web" Version="1.5.4" />
-    <PackageReference Include="NetModular.Lib.Module.AspNetCore" Version="1.5.3" />
-    <PackageReference Include="NetModular.Lib.Quartz.Web" Version="1.5.3" />
-    <PackageReference Include="NetModular.Lib.Utils.Mvc" Version="1.6.1" />
-    <PackageReference Include="NetModular.Lib.Validation.FluentValidation" Version="1.5.1" />
+    <PackageReference Include="NetModular.Lib.Auth.Web" Version="1.7.2" />
+    <PackageReference Include="NetModular.Lib.Module.AspNetCore" Version="1.7.2" />
+    <PackageReference Include="NetModular.Lib.Utils.Mvc" Version="1.7.2" />
+    <PackageReference Include="NetModular.Lib.Validation.FluentValidation" Version="1.7.2" />
   </ItemGroup>
   
   <ItemGroup>
     <ProjectReference Include="..\Library\Application\Application.csproj" />
     <ProjectReference Include="..\Library\Quartz\Quartz.csproj" />
+  </ItemGroup>
+
+  <!--打包模块相关文件到NuGet包中，此功能需要编译两次项目才行，因为打包操作在创建_module.json文件之前执行的-->
+  <ItemGroup>
+    <Content Include="$(SolutionDir)\src\WebHost\_modules*\**\*.*" PackagePath="contentFiles\any\any">
+      <Pack>true</Pack>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

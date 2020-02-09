@@ -1,6 +1,7 @@
 /** 页面信息 */
 const page = new (function() {
   this.title = '任务列表'
+  this.icon = 'list'
   this.name = 'quartz_job'
   this.path = '/quartz/job'
 

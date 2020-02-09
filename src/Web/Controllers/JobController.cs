@@ -1,9 +1,11 @@
 using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using NetModular.Lib.Auth.Web.Attributes;
+using NetModular.Lib.Quartz.Abstractions;
 using NetModular.Lib.Utils.Core.Extensions;
 using NetModular.Lib.Utils.Core.Result;
 using NetModular.Module.Quartz.Application.JobService;
@@ -11,7 +13,6 @@ using NetModular.Module.Quartz.Application.JobService.ViewModels;
 using NetModular.Module.Quartz.Domain.Job.Models;
 using NetModular.Module.Quartz.Domain.JobHttp;
 using NetModular.Module.Quartz.Domain.JobLog.Models;
-using NetModular.Module.Quartz.Web.Core;
 
 namespace NetModular.Module.Quartz.Web.Controllers
 {
@@ -19,12 +20,12 @@ namespace NetModular.Module.Quartz.Web.Controllers
     public class JobController : ModuleController
     {
         private readonly IJobService _service;
-        private readonly JobHelper _helper;
+        private readonly IQuartzModuleCollection _moduleCollection;
 
-        public JobController(IJobService service, JobHelper helper)
+        public JobController(IJobService service, IQuartzModuleCollection moduleCollection)
         {
             _service = service;
-            _helper = helper;
+            _moduleCollection = moduleCollection;
         }
 
         [HttpGet]
@@ -94,14 +95,23 @@ namespace NetModular.Module.Quartz.Web.Controllers
         [Common]
         public IResultModel ModuleSelect()
         {
-            return ResultModel.Success(_helper.ModuleSelect);
+            var select = _moduleCollection.Select(m => new OptionResultModel
+            {
+                Label = m.Module.Name,
+                Value = m.Module.Id
+            });
+            return ResultModel.Success(select);
         }
 
         [HttpGet]
         [Common]
         public IResultModel JobSelect(string moduleId)
         {
-            return ResultModel.Success(_helper.GetJobSelect(moduleId));
+            var module = _moduleCollection.FirstOrDefault(m => m.Module.Id == moduleId);
+            if (module == null)
+                return ResultModel.Failed();
+
+            return ResultModel.Success(module.TaskSelect);
         }
 
         [HttpPost]

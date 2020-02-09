@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using NetModular.Module.Quartz.Domain.Job;
 using Quartz;
 
-namespace NetModular.Module.Quartz.Web.Core
+namespace NetModular.Module.Quartz.Infrastructure.Core
 {
     public class SchedulerListener : ISchedulerListener
     {
