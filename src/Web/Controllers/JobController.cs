@@ -44,9 +44,9 @@ namespace NetModular.Module.Quartz.Web.Controllers
 
         [HttpGet]
         [Description("编辑")]
-        public async Task<IResultModel> Edit([BindRequired]Guid id)
+        public Task<IResultModel> Edit([BindRequired]Guid id)
         {
-            return await _service.Edit(id);
+            return _service.Edit(id);
         }
 
         [HttpPost]
@@ -123,9 +123,9 @@ namespace NetModular.Module.Quartz.Web.Controllers
 
         [HttpGet]
         [Description("编辑HTTP任务")]
-        public async Task<IResultModel> EditHttpJob([BindRequired]Guid id)
+        public Task<IResultModel> EditHttpJob([BindRequired]Guid id)
         {
-            return await _service.EditHttpJob(id);
+            return _service.EditHttpJob(id);
         }
 
         [HttpPost]

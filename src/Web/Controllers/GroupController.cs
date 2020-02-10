@@ -37,9 +37,9 @@ namespace NetModular.Module.Quartz.Web.Controllers
 
         [HttpDelete]
         [Description("删除")]
-        public async Task<IResultModel> Delete([BindRequired]Guid id)
+        public Task<IResultModel> Delete([BindRequired]Guid id)
         {
-            return await _service.Delete(id);
+            return _service.Delete(id);
         }
 
         /// <summary>
@@ -48,9 +48,9 @@ namespace NetModular.Module.Quartz.Web.Controllers
         /// <returns></returns>
         [HttpGet]
         [Common]
-        public async Task<IResultModel> Select()
+        public Task<IResultModel> Select()
         {
-            return await _service.Select();
+            return _service.Select();
         }
     }
 }
