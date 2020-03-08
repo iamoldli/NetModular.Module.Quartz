@@ -55,6 +55,10 @@ namespace NetModular.Module.Quartz.Infrastructure
 
         private readonly DbOptions _dbOptions;
 
+        public QuartzOptions()
+        {
+        }
+
         public QuartzOptions(DbOptions dbOptions)
         {
             _dbOptions = dbOptions;
