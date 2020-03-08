@@ -7,7 +7,6 @@ using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Threading.Tasks;
 using NetModular.Lib.Quartz.Abstractions;
-using NetModular.Lib.Quartz.Core;
 using NetModular.Lib.Utils.Core.Extensions;
 using NetModular.Module.Quartz.Domain.Job;
 using NetModular.Module.Quartz.Domain.JobHttp;
