@@ -55,10 +55,6 @@ namespace NetModular.Module.Quartz.Infrastructure
 
         private readonly DbOptions _dbOptions;
 
-        public QuartzOptions()
-        {
-        }
-
         public QuartzOptions(DbOptions dbOptions)
         {
             _dbOptions = dbOptions;
@@ -104,6 +100,19 @@ namespace NetModular.Module.Quartz.Infrastructure
             }
 
             return "";
+        }
+
+        public IModuleOptions Copy()
+        {
+            return new QuartzOptions(_dbOptions)
+            {
+                Enabled = Enabled,
+                EnabledLogger = EnabledLogger,
+                InstanceName = InstanceName,
+                Provider = Provider,
+                SerializerType = SerializerType,
+                TablePrefix = TablePrefix
+            };
         }
     }
 }

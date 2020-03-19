@@ -4,7 +4,7 @@
     <Name>任务调度</Name>
     <Authors>Oldli</Authors>
     <Icon>timer</Icon>
-    <Version>1.5.8</Version>
+    <Version>1.5.9</Version>
     <Description>NetModular Module $(Id)($(Name)) - $(MSBuildProjectName)</Description>
     <NoWarn>$(NoWarn);1591</NoWarn>
     <LangVersion>Latest</LangVersion>
