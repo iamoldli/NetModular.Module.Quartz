@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "src\Library\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Quartz", "src\Library\Quartz\Quartz.csproj", "{4C91C4E2-7A59-4175-8F98-8E59CE216FB4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generic", "src\Generic\Generic.csproj", "{1C186C79-2370-4900-9A57-445282D2E15F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{4C91C4E2-7A59-4175-8F98-8E59CE216FB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C91C4E2-7A59-4175-8F98-8E59CE216FB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C91C4E2-7A59-4175-8F98-8E59CE216FB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C186C79-2370-4900-9A57-445282D2E15F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C186C79-2370-4900-9A57-445282D2E15F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C186C79-2370-4900-9A57-445282D2E15F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C186C79-2370-4900-9A57-445282D2E15F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +73,7 @@ Global
 		{CEAE0B43-438D-4778-BF3A-8665246EF718} = {B4D3AF99-D551-4B7A-82F3-CE0950FCAA08}
 		{792B8CBF-AB02-4A87-AB5E-A6CB8E9DE39C} = {E58182FC-0950-453F-8C3A-ABCB477C8A28}
 		{4C91C4E2-7A59-4175-8F98-8E59CE216FB4} = {E58182FC-0950-453F-8C3A-ABCB477C8A28}
+		{1C186C79-2370-4900-9A57-445282D2E15F} = {B4D3AF99-D551-4B7A-82F3-CE0950FCAA08}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1A6F430A-4015-48B1-BD5B-32C30485B34D}
