@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using NetModular.Lib.Utils.Core.Result;
 using NetModular.Module.Quartz.Application.GroupService.ViewModels;
 using NetModular.Module.Quartz.Domain.Group;
 using NetModular.Module.Quartz.Domain.Group.Models;

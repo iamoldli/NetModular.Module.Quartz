@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using NetModular.Lib.Auth.Web.Attributes;
 using NetModular.Lib.Quartz.Abstractions;
 using NetModular.Lib.Utils.Core.Extensions;
-using NetModular.Lib.Utils.Core.Result;
 using NetModular.Module.Quartz.Application.JobService;
 using NetModular.Module.Quartz.Application.JobService.ViewModels;
 using NetModular.Module.Quartz.Domain.Job.Models;

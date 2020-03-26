@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using NetModular.Lib.Utils.Core.Result;
 using NetModular.Module.Quartz.Application.JobService.ViewModels;
 using NetModular.Module.Quartz.Domain.Job.Models;
 using NetModular.Module.Quartz.Domain.JobLog.Models;

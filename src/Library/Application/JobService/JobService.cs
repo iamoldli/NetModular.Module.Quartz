@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
 using NetModular.Lib.Quartz.Abstractions;
-using NetModular.Lib.Utils.Core.Result;
 using NetModular.Module.Quartz.Application.JobService.ViewModels;
 using NetModular.Module.Quartz.Domain.Job;
 using NetModular.Module.Quartz.Domain.Job.Models;
