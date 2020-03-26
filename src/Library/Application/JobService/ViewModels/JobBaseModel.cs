@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 using NetModular.Module.Quartz.Domain.Job;
 
 namespace NetModular.Module.Quartz.Application.JobService.ViewModels

@@ -1,7 +1,6 @@
 using System;
 using NetModular.Lib.Data.Abstractions.Attributes;
 using NetModular.Lib.Data.Core.Entities.Extend;
-using NetModular.Lib.Utils.Core.Enums;
 
 namespace NetModular.Module.Quartz.Domain.Job
 {
