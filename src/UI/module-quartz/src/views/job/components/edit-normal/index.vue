@@ -3,10 +3,10 @@
     <el-row>
       <el-col :span="20" :offset="1">
         <el-form-item label="所属模块：" prop="moduleCode">
-          <module-select v-model="form.model.moduleCode" />
+          <nm-module-select v-model="form.model.moduleCode" />
         </el-form-item>
         <el-form-item label="任务类名：" prop="jobClass">
-          <job-select :module-id="form.model.moduleCode" v-model="form.model.jobClass">
+          <job-select :module-code="form.model.moduleCode" v-model="form.model.jobClass">
             <template v-slot:default="{ options }">
               <el-option v-for="item in options" :key="item.value" :label="`${item.label} (${item.value})`" :value="item.value"></el-option>
             </template>
@@ -80,7 +80,6 @@
 </template>
 <script>
 import { mixins } from 'netmodular-ui'
-import ModuleSelect from '../module-select'
 import JobSelect from '../job-select'
 import GroupSelect from '../../../group/components/select'
 
@@ -88,7 +87,7 @@ const api = $api.quartz.job
 
 export default {
   mixins: [mixins.formDialogEdit],
-  components: { ModuleSelect, JobSelect, GroupSelect },
+  components: { JobSelect, GroupSelect },
   data() {
     return {
       api,

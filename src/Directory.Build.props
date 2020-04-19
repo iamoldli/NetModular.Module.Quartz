@@ -1,23 +1,24 @@
 ﻿<Project>
-  <PropertyGroup>
-    <Id>Quartz</Id>
-    <Name>任务调度</Name>
-    <Authors>Oldli</Authors>
-    <Icon>timer</Icon>
-    <Version>1.6.3</Version>
-    <Description>NetModular Module $(Id)($(Name)) - $(MSBuildProjectName)</Description>
-    <NoWarn>$(NoWarn);1591</NoWarn>
-    <LangVersion>Latest</LangVersion>
-    <RootNamespacePrefix>NetModular.Module.$(Id)</RootNamespacePrefix>
-    <AssemblyName>$(RootNamespacePrefix).$(MSBuildProjectName)</AssemblyName>
-    <RootNamespace>$(AssemblyName)</RootNamespace>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <!--设置打包路径-->
-    <PackageOutputPath>$(SolutionDir)\_packages</PackageOutputPath>
-    <Company>Oldli</Company>
-    <Copyright>Oldli</Copyright>
-    <PackageProjectUrl>https://docs.17mkh.com/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/iamoldli/NetModular.Module.Quartz</RepositoryUrl>
-  </PropertyGroup>
+	<PropertyGroup>
+		<Id>03</Id>
+		<Code>Quartz</Code>
+		<Name>任务调度</Name>
+		<Authors>Oldli</Authors>
+		<Icon>timer</Icon>
+		<Version>1.6.4</Version>
+		<Description>NetModular Module $(Code)($(Name)) - $(MSBuildProjectName)</Description>
+		<NoWarn>$(NoWarn);1591</NoWarn>
+		<LangVersion>Latest</LangVersion>
+		<RootNamespacePrefix>NetModular.Module.$(Code)</RootNamespacePrefix>
+		<AssemblyName>$(RootNamespacePrefix).$(MSBuildProjectName)</AssemblyName>
+		<RootNamespace>$(AssemblyName)</RootNamespace>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<!--设置打包路径-->
+		<PackageOutputPath>$(SolutionDir)\_packages</PackageOutputPath>
+		<Company>Oldli</Company>
+		<Copyright>Oldli</Copyright>
+		<PackageProjectUrl>https://docs.17mkh.com/</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/iamoldli/NetModular.Module.Quartz</RepositoryUrl>
+	</PropertyGroup>
 </Project>

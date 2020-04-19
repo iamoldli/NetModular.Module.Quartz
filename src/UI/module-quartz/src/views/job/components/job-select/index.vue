@@ -11,14 +11,14 @@ export default {
     }
   },
   props: {
-    moduleId: {
+    moduleCode: {
       type: String
     }
   },
   methods: {
     query() {
-      if (this.moduleId) {
-        return api.jobSelect(this.moduleId)
+      if (this.moduleCode) {
+        return api.jobSelect(this.moduleCode)
       } else {
         return new Promise(resolve => {
           resolve([])
@@ -27,7 +27,7 @@ export default {
     }
   },
   watch: {
-    moduleId(newVal, oldVal) {
+    moduleCode(newVal, oldVal) {
       if (oldVal) this.reset()
       this.refresh()
     }

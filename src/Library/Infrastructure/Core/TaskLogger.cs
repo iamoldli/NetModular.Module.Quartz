@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using NetModular.Lib.Config.Abstractions;
 using NetModular.Lib.Quartz.Abstractions;
 using NetModular.Module.Quartz.Domain.JobLog;
 
@@ -11,19 +12,20 @@ namespace NetModular.Module.Quartz.Infrastructure.Core
     public class TaskLogger : ITaskLogger
     {
         private readonly IJobLogRepository _repository;
-        private readonly QuartzOptions _options;
+        private readonly IConfigProvider _configProvider;
 
-        public TaskLogger(IJobLogRepository repository, QuartzOptions options)
+        public TaskLogger(IJobLogRepository repository, IConfigProvider configProvider)
         {
             _repository = repository;
-            _options = options;
+            _configProvider = configProvider;
         }
 
         public Guid JobId { get; set; }
 
         public async Task Info(string msg)
         {
-            if (!_options.EnabledLogger)
+            var config = _configProvider.Get<QuartzConfig>();
+            if (!config.Logger)
                 return;
 
             var entity = new JobLogEntity
@@ -39,7 +41,8 @@ namespace NetModular.Module.Quartz.Infrastructure.Core
 
         public async Task Debug(string msg)
         {
-            if (!_options.EnabledLogger)
+            var config = _configProvider.Get<QuartzConfig>();
+            if (!config.Logger)
                 return;
 
             var entity = new JobLogEntity
@@ -55,7 +58,8 @@ namespace NetModular.Module.Quartz.Infrastructure.Core
 
         public async Task Error(string msg)
         {
-            if (!_options.EnabledLogger)
+            var config = _configProvider.Get<QuartzConfig>();
+            if (!config.Logger)
                 return;
 
             var entity = new JobLogEntity

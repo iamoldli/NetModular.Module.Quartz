@@ -92,21 +92,9 @@ namespace NetModular.Module.Quartz.Web.Controllers
 
         [HttpGet]
         [Common]
-        public IResultModel ModuleSelect()
+        public IResultModel JobSelect(string moduleCode)
         {
-            var select = _moduleCollection.Select(m => new OptionResultModel
-            {
-                Label = m.Module.Name,
-                Value = m.Module.Id
-            });
-            return ResultModel.Success(select);
-        }
-
-        [HttpGet]
-        [Common]
-        public IResultModel JobSelect(string moduleId)
-        {
-            var module = _moduleCollection.FirstOrDefault(m => m.Module.Id == moduleId);
+            var module = _moduleCollection.FirstOrDefault(m => m.Module.Code == moduleCode);
             if (module == null)
                 return ResultModel.Failed();
 

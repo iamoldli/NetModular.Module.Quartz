@@ -1,11 +1,15 @@
+using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NetModular.Lib.Config.Abstractions;
+using NetModular.Lib.Data.Abstractions.Enums;
+using NetModular.Lib.Data.Abstractions.Options;
 using NetModular.Lib.Module.Abstractions;
 using NetModular.Lib.Module.AspNetCore;
 using NetModular.Lib.Quartz.Abstractions;
-using NetModular.Module.Quartz.Infrastructure;
+using Newtonsoft.Json;
 
 namespace NetModular.Module.Quartz.Web
 {
@@ -22,12 +26,17 @@ namespace NetModular.Module.Quartz.Web
         /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IHostEnvironment env)
         {
-            var server = app.ApplicationServices.GetService<IQuartzServer>();
-            var options = app.ApplicationServices.GetService<QuartzOptions>();
-            if (options.Enabled)
-            {
-                server.Start(options.GetQuartzProps());
-            }
+            //使用当前模块的数据库配置信息来配置Quartz的数据库配置
+            var dbOptions = app.ApplicationServices.GetService<DbOptions>();
+            var dbModuleOptions = dbOptions.Modules.First(m => m.Name.EqualsIgnoreCase("Quartz"));
+            var configProvider = app.ApplicationServices.GetService<IConfigProvider>();
+            var quartzConfig = configProvider.Get<QuartzConfig>();
+            quartzConfig.Provider = SqlDialect2QuartzProvider(dbOptions.Dialect);
+            quartzConfig.ConnectionString = dbModuleOptions.ConnectionString;
+            configProvider.Set(ConfigType.Library, "Quartz", JsonConvert.SerializeObject(quartzConfig));
+
+
+            app.ApplicationServices.GetService<IQuartzServer>().Start();
         }
 
         /// <summary>
@@ -37,6 +46,18 @@ namespace NetModular.Module.Quartz.Web
         public void ConfigureMvc(MvcOptions mvcOptions)
         {
 
+        }
+
+        protected QuartzProvider SqlDialect2QuartzProvider(SqlDialect sqlDialect)
+        {
+            switch (sqlDialect)
+            {
+                case SqlDialect.MySql: return QuartzProvider.MySql;
+                case SqlDialect.SQLite: return QuartzProvider.SQLite;
+                case SqlDialect.PostgreSQL: return QuartzProvider.PostgreSQL;
+                case SqlDialect.Oracle: return QuartzProvider.Oracle;
+                default: return QuartzProvider.SqlServer;
+            }
         }
     }
 }

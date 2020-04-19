@@ -3,7 +3,7 @@
     <el-row>
       <el-col :span="20" :offset="1">
         <el-form-item label="所属模块：" prop="moduleCode">
-          <module-select v-model="form.model.moduleCode" />
+          <nm-module-select v-model="form.model.moduleCode" />
         </el-form-item>
       </el-col>
     </el-row>
@@ -145,7 +145,6 @@
   </nm-form-page>
 </template>
 <script>
-import ModuleSelect from '../../module-select'
 import GroupSelect from '../../../../group/components/select'
 import AuthTypeSelect from '../../auth-type-select'
 import ContentTypeSelect from '../../content-type-select'
@@ -153,7 +152,7 @@ import ContentTypeSelect from '../../content-type-select'
 const api = $api.quartz.job
 
 export default {
-  components: { ModuleSelect, GroupSelect, AuthTypeSelect, ContentTypeSelect },
+  components: { GroupSelect, AuthTypeSelect, ContentTypeSelect },
   data() {
     return {
       form: {

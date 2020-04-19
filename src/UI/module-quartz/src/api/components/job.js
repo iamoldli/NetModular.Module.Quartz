@@ -4,7 +4,6 @@ export default name => {
   const root = `${module.code}/${name}/`
   const crud = $http.crud(root)
   const urls = {
-    moduleSelect: root + 'ModuleSelect',
     jobSelect: root + 'JobSelect',
     pause: root + 'Pause',
     resume: root + 'Resume',
@@ -18,12 +17,8 @@ export default name => {
     jobHttpDetails: root + 'jobHttpDetails'
   }
 
-  const moduleSelect = () => {
-    return $http.get(urls.moduleSelect)
-  }
-
-  const jobSelect = moduleId => {
-    return $http.get(urls.jobSelect, { moduleId })
+  const jobSelect = moduleCode => {
+    return $http.get(urls.jobSelect, { moduleCode })
   }
 
   const pause = id => {
@@ -66,7 +61,6 @@ export default name => {
   }
   return {
     ...crud,
-    moduleSelect,
     jobSelect,
     pause,
     resume,

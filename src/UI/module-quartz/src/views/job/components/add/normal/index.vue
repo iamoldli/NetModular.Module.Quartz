@@ -1,20 +1,6 @@
 <template>
   <nm-form-page ref="form" v-bind="form" @success="onSuccess" :rules="rules">
     <el-row>
-      <el-col :span="20" :offset="1">
-        <el-form-item label="所属模块：" prop="moduleCode">
-          <module-select v-model="form.model.moduleCode" />
-        </el-form-item>
-        <el-form-item label="任务类名：" prop="jobClass">
-          <job-select :module-id="form.model.moduleCode" v-model="form.model.jobClass">
-            <template v-slot:default="{ options }">
-              <el-option v-for="item in options" :key="item.value" :label="`${item.label} (${item.value})`" :value="item.value"></el-option>
-            </template>
-          </job-select>
-        </el-form-item>
-      </el-col>
-    </el-row>
-    <el-row>
       <el-col :span="10" :offset="1">
         <el-form-item label="任务分组：" prop="group">
           <group-select v-model="form.model.group" />
@@ -26,6 +12,20 @@
             <el-radio-button :label="0">通用</el-radio-button>
             <el-radio-button :label="1">CRON</el-radio-button>
           </el-radio-group>
+        </el-form-item>
+      </el-col>
+    </el-row>
+    <el-row>
+      <el-col :span="20" :offset="1">
+        <el-form-item label="所属模块：" prop="moduleCode">
+          <nm-module-select v-model="form.model.moduleCode" />
+        </el-form-item>
+        <el-form-item label="任务类名：" prop="jobClass">
+          <job-select :module-code="form.model.moduleCode" v-model="form.model.jobClass" @change="onJobSelectChange">
+            <template v-slot:default="{ options }">
+              <el-option v-for="item in options" :key="item.value" :label="`${item.label} (${item.value})`" :value="item.value"></el-option>
+            </template>
+          </job-select>
         </el-form-item>
       </el-col>
     </el-row>
@@ -79,14 +79,13 @@
   </nm-form-page>
 </template>
 <script>
-import ModuleSelect from '../../module-select'
 import JobSelect from '../../job-select'
 import GroupSelect from '../../../../group/components/select'
 
 const api = $api.quartz.job
 
 export default {
-  components: { ModuleSelect, JobSelect, GroupSelect },
+  components: { JobSelect, GroupSelect },
   data() {
     return {
       form: {
@@ -144,6 +143,14 @@ export default {
       this.$nextTick(() => {
         this.$refs.form.reset()
       })
+    },
+    onJobSelectChange(val, selection) {
+      this.form.model.name = ''
+      this.form.model.code = ''
+      if (val) {
+        this.form.model.name = selection.label
+        this.form.model.code = val.split(',')[0].split('.')[4]
+      }
     }
   }
 }
