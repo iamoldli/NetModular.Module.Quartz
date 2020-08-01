@@ -3,6 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,8 +13,9 @@
     <PackageReference Include="NetModular.Lib.Module.AspNetCore" Version="2.0.0" />
     <PackageReference Include="NetModular.Lib.Utils.Mvc" Version="2.0.0" />
     <PackageReference Include="NetModular.Lib.Validation.FluentValidation" Version="2.0.0" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <ProjectReference Include="..\Library\Application\Application.csproj" />
     <ProjectReference Include="..\Library\Quartz\Quartz.csproj" />
