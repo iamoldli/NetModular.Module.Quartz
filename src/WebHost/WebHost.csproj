@@ -10,14 +10,14 @@
 
   <ItemGroup>
     <PackageReference Include="NetModular.Lib.Cache.MemoryCache" Version="2.0.0" />
-    <PackageReference Include="NetModular.Lib.Data.MySql" Version="2.0.0" />
-    <PackageReference Include="NetModular.Lib.Data.PostgreSQL" Version="2.0.0" />
-    <PackageReference Include="NetModular.Lib.Data.SQLite" Version="2.0.0" />
-    <PackageReference Include="NetModular.Lib.Data.SqlServer" Version="2.0.0" />
+    <PackageReference Include="NetModular.Lib.Data.MySql" Version="2.0.6" />
+    <PackageReference Include="NetModular.Lib.Data.PostgreSQL" Version="2.0.6" />
+    <PackageReference Include="NetModular.Lib.Data.SQLite" Version="2.0.6" />
+    <PackageReference Include="NetModular.Lib.Data.SqlServer" Version="2.0.6" />
     <PackageReference Include="NetModular.Lib.Excel.EPPlus" Version="2.0.0" />
-    <PackageReference Include="NetModular.Lib.Host.Web" Version="2.0.0" />
-    <PackageReference Include="NetModular.Module.Admin.Quartz" Version="2.0.0" />
-    <PackageReference Include="NetModular.Module.Admin.Web" Version="2.0.0" />
+    <PackageReference Include="NetModular.Lib.Host.Web" Version="2.0.1" />
+    <PackageReference Include="NetModular.Module.Admin.Quartz" Version="2.0.5" />
+    <PackageReference Include="NetModular.Module.Admin.Web" Version="2.0.6" />
   </ItemGroup>
 
   <ItemGroup>
