@@ -338,3 +338,4 @@ ASALocalRun/
 /src/Web/modules
 /src/UI/module-common/package-lock.json
 /src/UI/module-quartz/package-lock.json
+/_packages
