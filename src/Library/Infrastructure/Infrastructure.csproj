@@ -9,9 +9,9 @@
 
   <ItemGroup>
     <PackageReference Include="NetModular.Lib.Config.Abstractions" Version="2.1.0" />
-    <PackageReference Include="NetModular.Lib.Module.Abstractions" Version="2.1.0" />
+    <PackageReference Include="NetModular.Lib.Module.Abstractions" Version="2.1.1" />
     <PackageReference Include="NetModular.Lib.Quartz.Core" Version="2.1.0" />
-    <PackageReference Include="NetModular.Module.Admin.Domain" Version="2.1.0" />
+    <PackageReference Include="NetModular.Module.Admin.Domain" Version="2.1.2" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
   </ItemGroup>
 

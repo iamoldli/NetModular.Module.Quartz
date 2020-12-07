@@ -10,14 +10,15 @@
 
   <ItemGroup>
     <PackageReference Include="NetModular.Lib.Cache.MemoryCache" Version="2.1.0" />
-    <PackageReference Include="NetModular.Lib.Data.MySql" Version="2.1.0" />
-    <PackageReference Include="NetModular.Lib.Data.PostgreSQL" Version="2.1.0" />
-    <PackageReference Include="NetModular.Lib.Data.SQLite" Version="2.1.0" />
-    <PackageReference Include="NetModular.Lib.Data.SqlServer" Version="2.1.0" />
+    <PackageReference Include="NetModular.Lib.Data.MySql" Version="2.1.4" />
+    <PackageReference Include="NetModular.Lib.Data.PostgreSQL" Version="2.1.4" />
+    <PackageReference Include="NetModular.Lib.Data.SQLite" Version="2.1.4" />
+    <PackageReference Include="NetModular.Lib.Data.SqlServer" Version="2.1.4" />
     <PackageReference Include="NetModular.Lib.Excel.EPPlus" Version="2.1.0" />
-    <PackageReference Include="NetModular.Lib.Host.Web" Version="2.1.0" />
-    <PackageReference Include="NetModular.Module.Admin.Quartz" Version="2.1.0" />
-    <PackageReference Include="NetModular.Module.Admin.Web" Version="2.1.0" />
+    <PackageReference Include="NetModular.Lib.Host.Web" Version="2.1.4" />
+    <PackageReference Include="NetModular.Lib.OSS.Local" Version="2.1.1" />
+    <PackageReference Include="NetModular.Module.Admin.Quartz" Version="2.1.2" />
+    <PackageReference Include="NetModular.Module.Admin.Web" Version="2.1.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +35,6 @@
     </None>
   </ItemGroup>
 
-  <ProjectExtensions><VisualStudio><UserProperties config_4db_1json__JsonSchema="http://json.schemastore.org/appveyor" /></VisualStudio></ProjectExtensions>
+  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 
 </Project>
