@@ -13,7 +13,7 @@ namespace NetModular.Module.Quartz.Infrastructure
     {
         public void Configure(IServiceCollection services, IModuleCollection modules, IHostEnvironment env, IConfiguration cfg)
         {
-            services.AddSingleton<ITaskLogger, Core.TaskLogger>();
+            services.AddTransient<ITaskLogger, Core.TaskLogger>();
             services.AddSingleton<ISchedulerListener, SchedulerListener>();
             services.AddQuartz(modules);
         }
