@@ -5,9 +5,10 @@
 		<Name>任务调度</Name>
 		<Authors>Oldli</Authors>
 		<Icon>timer</Icon>
-		<Version>1.7.3</Version>
+		<Version>9.0.0</Version>
 		<Description>NetModular Module $(Code)($(Name)) - $(MSBuildProjectName)</Description>
 		<NoWarn>$(NoWarn);1591</NoWarn>
+		<TargetFramework>net9.0</TargetFramework>
 		<LangVersion>Latest</LangVersion>
 		<RootNamespacePrefix>NetModular.Module.$(Code)</RootNamespacePrefix>
 		<AssemblyName>$(RootNamespacePrefix).$(MSBuildProjectName)</AssemblyName>

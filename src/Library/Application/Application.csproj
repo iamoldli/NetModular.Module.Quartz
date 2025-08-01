@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -9,8 +8,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
-    <PackageReference Include="NetModular.Lib.Mapper.AutoMapper" Version="2.1.0" />
-    <PackageReference Include="NetModular.Lib.Quartz.Abstractions" Version="2.1.0" />
+    <PackageReference Include="NetModular.Lib.Mapper.AutoMapper" Version="9.0.7" />
+    <PackageReference Include="NetModular.Lib.Quartz.Abstractions" Version="9.0.7" />
   </ItemGroup>
   
   <ItemGroup>

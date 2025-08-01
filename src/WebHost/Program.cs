@@ -6,7 +6,7 @@ namespace NetModular.Module.Quartz.WebHost
     {
         public static void Main(string[] args)
         {
-            new HostBuilder().Run<Startup>(args);
+            new HostBuilder().RunAsync(args);
         }
     }
 }
